@@ -3,13 +3,35 @@ import Layout from '../layouts/Contact.astro';
 ---
 
 <Layout
-	title="Contact"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-3.jpg"
+  title="Contact"
+  description="Contact"
+  pubDate={new Date('August 08 2021')}
+  heroImage="/blog-placeholder-3.jpg"
 >
-	<p>
-		Voor contact kun je het beste een bericht achterlaten op één van onze socials
-	</p>
+  <p>
+    Voor contact kun je het beste een bericht achterlaten en dan nemen we z.s.m. contact met je op.
+  </p>
 
+  <h1>Neem contact op</h1>
+  <form 
+    action="https://formspree.io/f/xanjwwdr" 
+    method="POST"
+  >
+    <label>
+      Naam:
+      <input type="text" name="name" required />
+    </label>
+    <br />
+    <label>
+      E-mail:
+      <input type="email" name="email" required />
+    </label>
+    <br />
+    <label>
+      Bericht:
+      <textarea name="message" required></textarea>
+    </label>
+    <br />
+    <button type="submit">Verstuur</button>
+  </form>
 </Layout>
