@@ -1,5 +1,5 @@
 ---
-title: "Fourth post"
+title: "Real World issues"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "May 29 2025"
 heroImage: "/blog-placeholder-2.jpg"
