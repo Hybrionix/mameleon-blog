@@ -22,7 +22,7 @@ import { SITE_TITLE } from '../consts';
 </header>
 <style>
   header {
-    margin: 0;
+    margin: 10px 0 0 0; /* 10px vanaf de bovenkant */
     padding: 0 1em;
     background: transparent;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -57,7 +57,6 @@ import { SITE_TITLE } from '../consts';
     display: flex;
     align-items: center;
     gap: 0.5em;
-    /* Donkere schaduw ONDER de titel, niet op de tekst */
     filter: none;
     position: relative;
   }
@@ -93,6 +92,8 @@ import { SITE_TITLE } from '../consts';
   .internal-links {
     display: flex;
     gap: 0.7em;
+    margin-left: 2em; /* Zet de knoppen verder naar links */
+    justify-content: flex-start; /* Links uitlijnen */
   }
   .internal-links a,
   .internal-links button,
