@@ -8,30 +8,30 @@ import Layout from '../layouts/Contact.astro';
   pubDate={new Date('August 08 2021')}
   heroImage="/mameleon.png"
 >
+  <h1>Neem contact op</h1>
   <p>
-    Voor contact kun je het beste een bericht achterlaten en dan nemen we z.s.m. contact met je op.
+    Heb je een vraag, opmerking of wil je graag samenwerken? Laat hieronder een bericht achter en ik neem zo snel mogelijk contact met je op.
   </p>
 
-  <h1>Neem contact op</h1>
   <form 
     action="https://formspree.io/f/xanjwwdr" 
     method="POST"
+    style="max-width: 500px; margin: 2rem auto; background: #f9f9f9; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"
   >
-    <label>
-      Naam:
-      <input type="text" name="name" required />
+    <label style="display: block; margin-bottom: 1rem;">
+      Naam:<br />
+      <input type="text" name="name" required style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;" />
     </label>
-    <br />
-    <label>
-      E-mail:
-      <input type="email" name="email" required />
+    <label style="display: block; margin-bottom: 1rem;">
+      E-mail:<br />
+      <input type="email" name="email" required style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;" />
     </label>
-    <br />
-    <label>
-      Bericht:
-      <textarea name="message" required></textarea>
+    <label style="display: block; margin-bottom: 1rem;">
+      Bericht:<br />
+      <textarea name="message" required rows="5" style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;"></textarea>
     </label>
-    <br />
-    <button type="submit">Verstuur</button>
+    <button type="submit" style="background: #4caf50; color: white; padding: 0.75rem 2rem; border: none; border-radius: 6px; cursor: pointer;">
+      Verstuur
+    </button>
   </form>
 </Layout>
