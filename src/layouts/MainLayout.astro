@@ -1,0 +1,68 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const { title, description, children } = Astro.props;
+---
+
+<html lang="nl">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      body {
+        background: linear-gradient(135deg, #ffe4ec 0%, #e0f7fa 100%);
+        font-family: 'Segoe UI', 'Arial', sans-serif;
+      }
+      header,
+      header[data-astro-cid-3ef6ksr2] {
+        background: linear-gradient(
+          90deg,
+          #ffacfa 0%,
+          #ffd6ec 16%,
+          #ffe4ba 32%,
+          #cafffa 48%,
+          #bae1ff 64%,
+          #d1baff 80%,
+          #ffacfa 100%
+        );
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        padding: 0.5em 0;
+      }
+      main {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: 2em auto;
+        padding: 2em;
+        background: rgba(255,255,255,0.85);
+        border-radius: 18px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        color: #444;
+      }
+      h1 {
+        color: #a16ae8;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-bottom: 1em;
+      }
+      a {
+        color: #4caf50;
+        text-decoration: underline;
+      }
+      @media (max-width: 800px) {
+        main {
+          width: 98%;
+          padding: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

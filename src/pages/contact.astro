@@ -1,18 +1,12 @@
 ---
-import Layout from '../layouts/Contact.astro';
+import Layout from '../layouts/MainLayout.astro';
 ---
 
-<Layout
-  title="Contact"
-  description="Contact"
-  pubDate={new Date('August 08 2021')}
-  heroImage="/mameleon.png"
->
+<Layout title="Contact" description="Contact">
   <h1>Neem contact op</h1>
   <p>
     Heb je een vraag, opmerking of wil je graag samenwerken? Laat hieronder een bericht achter en ik neem zo snel mogelijk contact met je op.
   </p>
-
   <form 
     action="https://formspree.io/f/xanjwwdr" 
     method="POST"
