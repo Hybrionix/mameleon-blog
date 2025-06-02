@@ -10,12 +10,19 @@ const { title, description, children } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
     <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
       body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
         background: linear-gradient(135deg, #ffe4ec 0%, #e0f7fa 100%);
         font-family: 'Segoe UI', 'Arial', sans-serif;
       }
-      header,
-      header[data-astro-cid-3ef6ksr2] {
+      header {
         background: linear-gradient(
           90deg,
           #ffacfa 0%,
@@ -38,6 +45,10 @@ const { title, description, children } = Astro.props;
         border-radius: 18px;
         box-shadow: 0 2px 16px rgba(0,0,0,0.07);
         color: #444;
+        flex: 1 0 auto;
+      }
+      footer {
+        flex-shrink: 0;
       }
       h1 {
         color: #a16ae8;
