@@ -85,13 +85,11 @@ import { SITE_TITLE } from '../consts';
     display: flex;
     align-items: center;
     gap: 0.5em;
-    /* Donkere schaduw onder de titel */
-    text-shadow:
-      0 4px 18px rgba(60, 40, 90, 0.25),
-      0 2px 4px rgba(60, 40, 90, 0.18);
+    /* Donkere schaduw ONDER de titel, niet op de tekst */
+    filter: drop-shadow(0 8px 18px rgba(60,40,90,0.18));
   }
   .rainbow-text {
-    background: linear-gradient(90deg, #ff5e62 0%, #ff9966 20%, #f9d423 40%, #a1ffce 60%, #38f9d7 80%, #667eea 100%);
+    background: linear-gradient(90deg, #a16ae8 0%, #e573c7 40%, #ff69b4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -100,10 +98,7 @@ import { SITE_TITLE } from '../consts';
     font-weight: 900;
     letter-spacing: 2px;
     display: inline-block;
-    /* Extra schaduw voor de tekst zelf */
-    text-shadow:
-      0 4px 18px rgba(60, 40, 90, 0.25),
-      0 2px 4px rgba(60, 40, 90, 0.18);
+    /* Geen text-shadow meer! */
   }
   .blog-subtitle {
     font-size: 0.7em;
@@ -112,7 +107,7 @@ import { SITE_TITLE } from '../consts';
     margin-left: 0.5em;
     letter-spacing: 1px;
     vertical-align: middle;
-    text-shadow: 0 2px 8px rgba(60,40,90,0.12);
+    /* Geen text-shadow meer! */
   }
   .internal-links {
     display: flex;
@@ -125,7 +120,7 @@ import { SITE_TITLE } from '../consts';
     padding: 0.5em 1.2em;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(90deg, #7e57c2 0%, #4caf50 100%);
+    background: linear-gradient(90deg, #a16ae8 0%, #e573c7 100%);
     color: #fff;
     font-weight: 600;
     font-size: 1em;
@@ -133,11 +128,12 @@ import { SITE_TITLE } from '../consts';
     box-shadow: 0 2px 8px rgba(60,40,90,0.10);
     transition: background 0.2s, color 0.2s, transform 0.15s;
     cursor: pointer;
+    /* Geen text-shadow meer! */
   }
   .internal-links a:hover,
   .internal-links button:hover,
   .internal-links HeaderLink:hover {
-    background: linear-gradient(90deg, #4caf50 0%, #7e57c2 100%);
+    background: linear-gradient(90deg, #e573c7 0%, #a16ae8 100%);
     color: #fff;
     transform: translateY(-2px) scale(1.05);
     text-decoration: none;
