@@ -17,12 +17,14 @@ import { SITE_TITLE } from '../consts';
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/contact">Contact</HeaderLink>
     </div>
-    <SocialLinks />
+    <div class="header-socials">
+      <SocialLinks />
+    </div>
   </nav>
 </header>
 <style>
   header {
-    margin: 10px 0 0 0; /* 10px vanaf de bovenkant */
+    margin: 10px 0 0 0;
     padding: 0 1em;
     background: transparent;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -43,10 +45,11 @@ import { SITE_TITLE } from '../consts';
     box-shadow: 0 2px 12px rgba(0,0,0,0.04);
     padding: 0.5em 1em;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2em;
+    gap: 0.7em;
   }
   .site-title {
     margin: 0;
@@ -91,9 +94,9 @@ import { SITE_TITLE } from '../consts';
   }
   .internal-links {
     display: flex;
-    gap: 2.em;
-    margin-left: 0; /* Verwijder de marge */
-    justify-content: center; /* Of eventueel 'flex-start' als je ze wilt centreren */
+    gap: 2em;
+    margin-left: 0;
+    justify-content: center;
   }
   .internal-links a,
   .internal-links button,
@@ -120,6 +123,13 @@ import { SITE_TITLE } from '../consts';
     transform: translateY(-2px) scale(1.05);
     text-decoration: none;
   }
+  .header-socials {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
   .social-links {
     display: flex;
     gap: 0.5em;
@@ -129,7 +139,7 @@ import { SITE_TITLE } from '../consts';
     display: flex;
     align-items: center;
     transition: transform 0.2s;
-    color: #a16ae8;
+    color: #4B2067;
   }
   .social-links a:hover {
     transform: scale(1.15) rotate(-6deg);
@@ -152,6 +162,9 @@ import { SITE_TITLE } from '../consts';
       justify-content: center;
       flex-wrap: wrap;
       gap: 0.5em;
+    }
+    .header-socials {
+      justify-content: center;
     }
     .social-links {
       justify-content: center;
