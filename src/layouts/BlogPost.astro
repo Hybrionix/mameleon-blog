@@ -30,6 +30,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <slot />
   </article>
   <style>
+    /* Remove any body font-size override so MainLayout's 18px is used */
     .hero-image {
       width: 100%;
       margin-bottom: 1.5em;
