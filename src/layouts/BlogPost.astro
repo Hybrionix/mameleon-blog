@@ -30,9 +30,14 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <slot />
   </article>
   <style>
-    body {
-      font-size: 18px;
-    }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(135deg, #ffe4ec 0%, #e0f7fa 100%);
+        font-family: 'Segoe UI', 'Arial', sans-serif;
+        font-size: 18px;
+      }
     .hero-image {
       width: 100%;
       margin-bottom: 1.5em;
