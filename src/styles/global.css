@@ -31,16 +31,20 @@
   font-display: swap;
 }
 body {
-  font-family: "Atkinson", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;    
+  font-family: 'Segoe UI', 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   text-align: left;
-  background: linear-gradient(var(--gray-gradient)) no-repeat;
+  /* background: linear-gradient(var(--gray-gradient)) no-repeat; */
+  background: linear-gradient(135deg, #ffe4ec 0%, #e0f7fa 100%);
   background-size: 100% 600px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: rgb(var(--gray-dark));
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.7;
 }
 main {
