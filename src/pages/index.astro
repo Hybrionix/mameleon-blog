@@ -5,25 +5,70 @@ import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<!doctype html>
 <html lang="nl">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <Header />
-        <main>
-            <h1>🧑‍🚀 Welkom bij Mameleon!</h1>
-            <p>
-                Fijn dat je onze website bezoekt. Mameleon is een nieuw en ambitieus bedrijf, gespecialiseerd in het ontwikkelen van inspirerende materialen op het gebied van coaching en persoonlijke groei.
-            </p>
-            <p>
-                Wij geloven dat iedereen het vermogen heeft om te groeien en zich te ontwikkelen. Daarom creëren wij praktische tools, trainingen en content die jou helpen het beste uit jezelf te halen – zowel persoonlijk als professioneel.
-            </p>
-            <p>
-                Onze website is momenteel in aanbouw. Binnenkort vind je hier meer informatie over onze diensten, producten en inspirerende verhalen. Heb je vragen of wil je samenwerken? Neem gerust <a href="https://www.mameleon.com/">contact</a> met ons op!
-            </p>
-        </main>
-        <Footer />
-    </body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      body {
+        background: linear-gradient(135deg, #ffe4ec 0%, #e0f7fa 100%);
+        font-family: 'Segoe UI', 'Arial', sans-serif;
+      }
+      header {
+        background: linear-gradient(
+          90deg,
+          #ffb3ba 0%,
+          #ffdfba 20%,
+          #ffffba 40%,
+          #baffc9 60%,
+          #bae1ff 80%,
+          #e0baff 100%
+        );
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        padding: 0.5em 0;
+      }
+      main {
+        width: 720px;
+        max-width: calc(100% - 2em);
+        margin: 2em auto;
+        padding: 2em;
+        background: rgba(255,255,255,0.85);
+        border-radius: 18px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        color: #444;
+      }
+      h1 {
+        color: #a16ae8;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-bottom: 1em;
+      }
+      a {
+        color: #4caf50;
+        text-decoration: underline;
+      }
+      @media (max-width: 800px) {
+        main {
+          width: 98%;
+          padding: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>🧑‍🚀 Welkom bij Mameleon!</h1>
+      <p>
+        Fijn dat je onze website bezoekt. Mameleon is een nieuw en ambitieus bedrijf, gespecialiseerd in het ontwikkelen van inspirerende materialen op het gebied van coaching en persoonlijke groei.
+      </p>
+      <p>
+        Wij geloven dat iedereen het vermogen heeft om te groeien en zich te ontwikkelen. Daarom creëren wij praktische tools, trainingen en content die jou helpen het beste uit jezelf te halen – zowel persoonlijk als professioneel.
+      </p>
+      <p>
+        Onze website is momenteel in aanbouw. Binnenkort vind je hier meer informatie over onze diensten, producten en inspirerende verhalen. Heb je vragen of wil je samenwerken? Neem gerust <a href="https://www.mameleon.com/">contact</a> met ons op!
+      </p>
+    </main>
+    <Footer />
+  </body>
 </html>
