@@ -23,13 +23,10 @@ import { SITE_TITLE } from '../consts';
   </nav>
 </header>
 <style>
-  header {
-    margin: 10px 0 0 0;
-    padding: 0 1em;
-    background: transparent;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
   .header-bar {
+    width: 1000px;
+    max-width: calc(100% - 2em);
+    margin: 0 auto;
     background: linear-gradient(
       90deg,
       #ffacfa 0%,
@@ -49,6 +46,12 @@ import { SITE_TITLE } from '../consts';
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.7em;
+  }
+  header {
+    margin: 10px 0 0 0;
+    padding: 0 1em;
+    background: transparent;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
   .header-section {
     display: flex;
@@ -147,6 +150,13 @@ import { SITE_TITLE } from '../consts';
   }
   .social-links svg {
     display: block;
+  }
+  @media (max-width: 1000px) {
+    .header-bar {
+      width: 98%;
+      max-width: 98%;
+      padding: 0.5em 0.5em;
+    }
   }
   @media (max-width: 900px) {
     .header-bar {
