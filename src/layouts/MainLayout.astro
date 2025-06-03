@@ -8,7 +8,7 @@ const { title, description, children } = Astro.props;
 
 <html lang="nl">
   <head>
-    <BaseHead title={title} description={description} canonical={`https://www.mameleon.com${Astro.url.pathname}`} />
+    <BaseHead title={title} description={description} />
     <!-- Removed style block, all styles are now in global.css -->
   </head>
   <body>

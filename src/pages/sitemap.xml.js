@@ -20,6 +20,7 @@ ${pages
   )
   .join('\n')}
 </urlset>`;
+
   return {
     body: sitemap,
     headers: {
