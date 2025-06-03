@@ -13,11 +13,17 @@ export async function GET() {
   // Get all blog posts from the content collection
   const posts = await getCollection('blog');
   const blogPages = posts.map((post) => {
-    // Use slug if available, otherwise fallback to id (remove .md/.mdx, lowercase)
     const slug = post.slug || post.id.replace(/\.(md|mdx)$/i, '').toLowerCase();
+    let date = post.data.updated || post.data.pubDate || '2025-06-03';
+
+    // Convert Date objects to ISO 8601 string (YYYY-MM-DD)
+    if (date instanceof Date) {
+      date = date.toISOString().split('T')[0];
+    }
+
     return {
       url: `https://www.mameleon.com/blog/${slug}/`,
-      lastmod: post.data.updated || post.data.pubDate || '2025-06-03',
+      lastmod: date,
     };
   });
 
