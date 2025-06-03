@@ -3,6 +3,20 @@ import Layout from '../layouts/MainLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
+if (Astro.request.headers.get('host') === 'mameleon.com') {
+  // Render a meta refresh redirect for non-www
+  return `<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta http-equiv="refresh" content="0; url=https://www.mameleon.com/" />
+      <title>Redirecting...</title>
+    </head>
+    <body>
+      <p>Redirecting to <a href="https://www.mameleon.com/">https://www.mameleon.com/</a></p>
+    </body>
+  </html>`;
+}
+
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <!-- <h1>🧑‍🚀 Welkom bij Mameleon!</h1> -->
   <h1>🧑 Welkom bij Mameleon!</h1>
