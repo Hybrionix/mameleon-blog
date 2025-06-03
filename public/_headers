@@ -1,5 +1,7 @@
+/*.html
+  Content-Type: text/html; charset=utf-8
+
 /*
   X-Content-Type-Options: nosniff
   Cache-Control: public, max-age=31536000, immutable
-  Content-Type: text/html; charset=utf-8
   Content-Security-Policy: frame-ancestors 'self'
