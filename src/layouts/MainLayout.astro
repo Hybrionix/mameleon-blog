@@ -7,7 +7,6 @@ const { title, description } = Astro.props;
 ---
 
 <BaseHead title={title} description={description} />
-<meta name="viewport" content="width=device-width,initial-scale=1">
 <script>
   if (location.hostname === 'mameleon.com') {
     location.href = 'https://www.mameleon.com' + location.pathname + location.search + location.hash;
