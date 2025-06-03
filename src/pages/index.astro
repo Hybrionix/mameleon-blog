@@ -6,6 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
   <head>
     <title>{SITE_TITLE}</title>
     <meta name="description" content={SITE_DESCRIPTION} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
       if (location.hostname === 'mameleon.com') {
         location.href = 'https://www.mameleon.com' + location.pathname + location.search + location.hash;
