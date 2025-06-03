@@ -4,22 +4,21 @@ const today = new Date();
 ---
 <footer>
   <div class="footer-content">
-    <div>
-      © {today.getFullYear()} Mameleon
-    </div>
     <nav class="footer-links">
       <a href="/algemene-voorwaarden" target="_blank" rel="noopener">Algemene voorwaarden</a>
       <span>|</span>
       <a href="/privacy-verklaring" target="_blank" rel="noopener">Privacy verklaring</a>
     </nav>
     <SocialLinks />
+    <div class="footer-copyright">
+      © {today.getFullYear()} Mameleon
+    </div>
   </div>
   <style>
     footer {
       text-align: center;
-      padding: 2em 0 1.5em 0;
       background: transparent;
-      font-size: 1.1em;
+      font-size: 0.9em;
     }
     .footer-content {
       display: flex;
@@ -39,6 +38,11 @@ const today = new Date();
     }
     .footer-links span {
       color: #888;
+    }
+    .footer-copyright {
+      font-size: 0.8em;
+      color: #888;
+      margin-top: 0.5em;
     }
   </style>
 </footer>
