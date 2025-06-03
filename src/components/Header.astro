@@ -6,19 +6,21 @@ import { SITE_TITLE } from '../consts';
 
 <header>
   <nav class="header-bar">
-    <div class="header-section site-title">
-      <a href="/">
-        <span class="rainbow-text">Mameleon</span>
-      </a>
-    </div>
-    <div class="header-section internal-links">
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/about">Over mij</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/contact">Contact</HeaderLink>
-    </div>
-    <div class="header-section header-socials">
-      <SocialLinks />
+    <div class="header-content">
+      <div class="header-section site-title">
+        <a href="/">
+          <span class="rainbow-text">Mameleon</span>
+        </a>
+      </div>
+      <div class="header-section internal-links">
+        <HeaderLink href="/">Home</HeaderLink>
+        <HeaderLink href="/about">Over mij</HeaderLink>
+        <HeaderLink href="/blog">Blog</HeaderLink>
+        <HeaderLink href="/contact">Contact</HeaderLink>
+      </div>
+      <div class="header-section header-socials">
+        <SocialLinks />
+      </div>
     </div>
   </nav>
 </header>
@@ -39,13 +41,18 @@ import { SITE_TITLE } from '../consts';
     border-radius: 16px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.04);
     padding: 0.5em 1em;
+    border: 2px solid #4B2067;
+  }
+  .header-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center; /* Center all items */
+    justify-content: center;
     flex-wrap: wrap;
     gap: 0.7em;
-    border: 2px solid #4B2067; /* Add dark purple border */
   }
   header {
     margin: 10px 0 0 0;
