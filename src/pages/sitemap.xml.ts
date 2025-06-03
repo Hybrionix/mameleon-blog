@@ -1,3 +1,5 @@
+import { getCollection } from 'astro:content';
+
 export async function GET() {
   const pages = [
     { url: 'https://www.mameleon.com/', lastmod: '2025-06-03' },
@@ -9,9 +11,18 @@ export async function GET() {
     // Add more pages as needed
   ];
 
+  // Get all blog posts from the content collection
+  const posts = await getCollection('blog');
+  const blogPages = posts.map((post) => ({
+    url: `https://www.mameleon.com/blog/${post.slug}/`,
+    lastmod: post.data.updated || post.data.pubDate || '2025-06-03',
+  }));
+
+  const allPages = [...pages, ...blogPages];
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages
+${allPages
   .map(
     (page) => `<url>
   <loc>${page.url}</loc>
