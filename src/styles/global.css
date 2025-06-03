@@ -54,8 +54,8 @@ body {
 }
 
 main {
-  width: 1000px;
-  max-width: calc(100% - 2em);
+  /* width: 1000px; */
+  max-width: calc(45% - 2em);
   margin: 2em auto;
   padding: 2em;
   background: rgba(255,255,255,0.85);
