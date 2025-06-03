@@ -13,8 +13,8 @@ export async function GET() {
   // Get all blog posts from the content collection
   const posts = await getCollection('blog');
   const blogPages = posts.map((post) => {
-    // Use slug if available, otherwise fallback to id (without file extension)
-    const slug = post.slug || post.id.replace(/\.mdx?$/, '');
+    // Use slug if available, otherwise fallback to id (remove .md/.mdx, lowercase)
+    const slug = post.slug || post.id.replace(/\.(md|mdx)$/i, '').toLowerCase();
     return {
       url: `https://www.mameleon.com/blog/${slug}/`,
       lastmod: post.data.updated || post.data.pubDate || '2025-06-03',
