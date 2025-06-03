@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/MainLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
----
 
-if (Astro.request.headers.get('host') === 'mameleon.com') {
-  // Render a meta refresh redirect for non-www
-  return `<!DOCTYPE html>
+const isNonWww =
+  Astro.request?.headers?.get('host') === 'mameleon.com';
+---
+{isNonWww && (
   <html lang="en">
     <head>
       <meta http-equiv="refresh" content="0; url=https://www.mameleon.com/" />
@@ -14,19 +14,20 @@ if (Astro.request.headers.get('host') === 'mameleon.com') {
     <body>
       <p>Redirecting to <a href="https://www.mameleon.com/">https://www.mameleon.com/</a></p>
     </body>
-  </html>`;
-}
-
-<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <!-- <h1>🧑‍🚀 Welkom bij Mameleon!</h1> -->
-  <h1>🧑 Welkom bij Mameleon!</h1>
-  <p>
-    Fijn dat je onze website bezoekt. Mameleon is een nieuw en ambitieus bedrijf, gespecialiseerd in het ontwikkelen van inspirerende materialen op het gebied van coaching en persoonlijke groei.
-  </p>
-  <p>
-    Wij geloven dat iedereen het vermogen heeft om te groeien en zich te ontwikkelen. Daarom creëren wij praktische tools, trainingen en content die jou helpen het beste uit jezelf te halen – zowel persoonlijk als professioneel.
-  </p>
-  <p>
-    Onze website is momenteel in aanbouw. Binnenkort vind je hier meer informatie over onze diensten, producten en inspirerende verhalen. Heb je vragen of wil je samenwerken? Neem gerust <a href="https://www.mameleon.com/">contact</a> met ons op!
-  </p>
-</Layout>
+  </html>
+)}
+{!isNonWww && (
+  <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+    <!-- <h1>🧑‍🚀 Welkom bij Mameleon!</h1> -->
+    <h1>🧑 Welkom bij Mameleon!</h1>
+    <p>
+      Fijn dat je onze website bezoekt. Mameleon is een nieuw en ambitieus bedrijf, gespecialiseerd in het ontwikkelen van inspirerende materialen op het gebied van coaching en persoonlijke groei.
+    </p>
+    <p>
+      Wij geloven dat iedereen het vermogen heeft om te groeien en zich te ontwikkelen. Daarom creëren wij praktische tools, trainingen en content die jou helpen het beste uit jezelf te halen – zowel persoonlijk als professioneel.
+    </p>
+    <p>
+      Onze website is momenteel in aanbouw. Binnenkort vind je hier meer informatie over onze diensten, producten en inspirerende verhalen. Heb je vragen of wil je samenwerken? Neem gerust <a href="https://www.mameleon.com/">contact</a> met ons op!
+    </p>
+  </Layout>
+)}
