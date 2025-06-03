@@ -1,4 +1,4 @@
-export async function get() {
+export async function GET() {
   const pages = [
     { url: 'https://www.mameleon.com/', lastmod: '2025-06-03' },
     { url: 'https://www.mameleon.com/about', lastmod: '2025-06-03' },
@@ -21,10 +21,9 @@ ${pages
   .join('\n')}
 </urlset>`;
 
-  return {
-    body: sitemap,
+  return new Response(sitemap, {
     headers: {
       'Content-Type': 'application/xml',
     },
-  };
+  });
 }
