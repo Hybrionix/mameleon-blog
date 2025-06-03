@@ -8,8 +8,11 @@ const { title, description, children } = Astro.props;
 
 <html lang="nl">
   <head>
-    <BaseHead title={title} description={description} />
-    <!-- Removed style block, all styles are now in global.css -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <!-- other head elements -->
   </head>
   <body>
     <Header />
