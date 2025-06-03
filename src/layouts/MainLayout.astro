@@ -3,19 +3,17 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const { title, description, children } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<html lang="nl">
-  <head>
-    <BaseHead title={title} description={description} />
-    <!-- Removed style block, all styles are now in global.css -->
-  </head>
-  <body>
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseHead title={title} description={description} />
+<script>
+  if (location.hostname === 'mameleon.com') {
+    location.href = 'https://www.mameleon.com' + location.pathname + location.search + location.hash;
+  }
+</script>
+<Header />
+<main>
+  <slot />
+</main>
+<Footer />

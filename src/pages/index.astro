@@ -3,16 +3,6 @@ import Layout from '../layouts/MainLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 <html lang="en">
-  <head>
-    <title>{SITE_TITLE}</title>
-    <meta name="description" content={SITE_DESCRIPTION} />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script>
-      if (location.hostname === 'mameleon.com') {
-        location.href = 'https://www.mameleon.com' + location.pathname + location.search + location.hash;
-      }
-    </script>
-  </head>
   <body>
     <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
       <h1>🧑 Welkom bij Mameleon!</h1>
