@@ -7,6 +7,11 @@ const { title, description } = Astro.props;
 ---
 
 <BaseHead title={title} description={description} />
+<script>
+  if (location.hostname === 'mameleon.com') {
+    location.href = 'https://www.mameleon.com' + location.pathname + location.search + location.hash;
+  }
+</script>
 <Header />
 <main>
   <slot />
