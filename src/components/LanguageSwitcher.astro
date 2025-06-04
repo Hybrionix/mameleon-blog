@@ -1,0 +1,39 @@
+---
+const languages = [
+  { code: 'nl', name: 'Nederlands', path: '/' },
+  { code: 'en', name: 'English', path: '/en/' },
+];
+const currentPath = Astro.url.pathname;
+---
+<nav class="language-switcher">
+  {languages.map(lang => (
+    <a
+      href={lang.path}
+      class={currentPath.startsWith(lang.path) ? 'active' : ''}
+      aria-current={currentPath.startsWith(lang.path) ? 'page' : undefined}
+    >
+      {lang.name}
+    </a>
+  ))}
+</nav>
+<style>
+.language-switcher {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
+.language-switcher a {
+  color: #330075;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.2em 0.7em;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.language-switcher a.active,
+.language-switcher a:hover {
+  background: #d1baff;
+  color: #4B2067;
+}
+</style>

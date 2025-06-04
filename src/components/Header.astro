@@ -1,6 +1,7 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import SocialLinks from './SocialLinks.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
@@ -12,6 +13,7 @@ import { SITE_TITLE } from '../consts';
           <span class="rainbow-text">Mameleon</span>
         </a>
       </div>
+      <LanguageSwitcher />
       <div class="header-section internal-links">
         <HeaderLink href="/">Home</HeaderLink>
         <HeaderLink href="/about">Over mij</HeaderLink>
@@ -20,9 +22,9 @@ import { SITE_TITLE } from '../consts';
       </div>
     </div>
   </nav>
-      <div class="header-section header-socials">
-        <SocialLinks />
-      </div>
+  <div class="header-section header-socials">
+    <SocialLinks />
+  </div>
 </header>
 <style>
   .header-bar {
