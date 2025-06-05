@@ -6,4 +6,4 @@ heroImage: "/mameleon.png"
 ---
 Our official start will be June 6th 2025!
 
-.filter(post => post.data.lang === 'nl')
+.filter(post => post.data.lang === 'en')
