@@ -1,15 +1,21 @@
 ---
 import Layout from '../layouts/MainLayout.astro';
+import { getLangProps } from '../utils/lang.js';
+
+const { lang, nlPath, enPath } = getLangProps(Astro.url.pathname);
 ---
 
-<Layout title="Contact" description="Contact">
-  <h1>Neem contact op</h1>
+<Layout title={lang === 'en' ? 'Contact' : 'Contact'} description={lang === 'en' ? 'Contact' : 'Contact'} lang={lang} nlPath={nlPath} enPath={enPath}>
+  <h1>{lang === 'en' ? 'Contact Us' : 'Neem contact op'}</h1>
   <p>
-    Heb je een vraag, opmerking of wil je graag samenwerken? Laat hieronder een bericht achter en ik neem zo snel mogelijk contact met je op.
+    {lang === 'en'
+      ? "Do you have a question, comment, or would you like to collaborate? Leave a message below and I will contact you as soon as possible."
+      : "Heb je een vraag, opmerking of wil je graag samenwerken? Laat hieronder een bericht achter en ik neem zo snel mogelijk contact met je op."
+    }
   </p>
 
   <details style="max-width: 500px; margin: 1.5rem auto; background: #f3f3fa; padding: 1.2rem; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
-    <summary style="font-weight: bold; cursor: pointer;">Bedrijfsgegevens</summary>
+    <summary style="font-weight: bold; cursor: pointer;">{lang === 'en' ? 'Company Details' : 'Bedrijfsgegevens'}</summary>
     <div style="margin-top: 1rem;">
       <div>
         KVK: 
@@ -18,7 +24,7 @@ import Layout from '../layouts/MainLayout.astro';
         </a>
       </div>
       <div>
-        Telefoon: 
+        {lang === 'en' ? 'Phone' : 'Telefoon'}: 
         <a href="tel:0343218122" style="color: #4caf50; text-decoration: underline;">
           0343-218122
         </a>
@@ -33,19 +39,19 @@ import Layout from '../layouts/MainLayout.astro';
   >
     <input type="hidden" name="_next" value="https://www.mameleon.com/bedankt/" />
     <label style="display: block; margin-bottom: 1rem;">
-      Naam:<br />
+      {lang === 'en' ? 'Name:' : 'Naam:'}<br />
       <input type="text" name="name" required style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;" />
     </label>
     <label style="display: block; margin-bottom: 1rem;">
-      E-mail:<br />
+      {lang === 'en' ? 'Email:' : 'E-mail:'}<br />
       <input type="email" name="email" required style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;" />
     </label>
     <label style="display: block; margin-bottom: 1rem;">
-      Bericht:<br />
+      {lang === 'en' ? 'Message:' : 'Bericht:'}<br />
       <textarea name="message" required rows="5" style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;"></textarea>
     </label>
     <button type="submit" style="background: #4caf50; color: white; padding: 0.75rem 2rem; border: none; border-radius: 6px; cursor: pointer;">
-      Verstuur
+      {lang === 'en' ? 'Send' : 'Verstuur'}
     </button>
   </form>
 </Layout>
