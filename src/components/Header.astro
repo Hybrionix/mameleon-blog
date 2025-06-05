@@ -26,7 +26,18 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   <div class="header-section header-socials">
     <SocialLinks />
   </div>
-  <LanguageSwitcher lang={lang} nlPath={nlPath} enPath={enPath} />
+  <nav class="language-switcher">
+    <a 
+      href={nlPath} 
+      class={lang === 'nl' ? 'active' : ''} 
+      onclick="localStorage.setItem('lang','nl')"
+    >Nederlands</a>
+    <a 
+      href={enPath} 
+      class={lang === 'en' ? 'active' : ''} 
+      onclick="localStorage.setItem('lang','en')"
+    >English</a>
+  </nav>
 </header>
 <style>
   .header-bar {

@@ -1,12 +1,8 @@
 ---
 import Layout from '../layouts/MainLayout.astro';
-import { getLangProps } from '../utils/lang.js';
-
-const { lang, nlPath, enPath } = getLangProps(Astro.url.pathname);
 ---
 
 <Layout title="Over Mij" description="Over Mij">
-  <LanguageSwitcher lang="nl" nlPath="/about" enPath="/en/about" />
   <h1>Over Mij</h1>
   <p>
     Hoi! Mijn naam is Roxy, trotse moeder van vier kinderen. Met meer dan 20 jaar ervaring in de kinderopvang, gastouderopvang en coaching, heb ik een passie ontwikkeld voor het begeleiden en inspireren van kinderen én volwassenen.

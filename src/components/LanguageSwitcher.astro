@@ -1,23 +1,17 @@
 ---
 const { nlPath = '/', enPath = '/en/', lang = 'nl' } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 <nav class="language-switcher">
-  <a
-    href={nlPath}
-    class={lang === 'nl' ? 'active' : ''}
-    onclick="localStorage.setItem('lang','nl')"
-  >Nederlands</a>
-  <a
-    href={enPath}
-    class={lang === 'en' ? 'active' : ''}
-    onclick="localStorage.setItem('lang','en')"
-  >English</a>
+  <a href={nlPath} class={lang === 'nl' ? 'active' : ''} onclick="localStorage.setItem('lang','nl')">Nederlands</a>
+  <a href={enPath} class={lang === 'en' ? 'active' : ''} onclick="localStorage.setItem('lang','en')">English</a>
 </nav>
+<p>lang: {lang} | path: {Astro.url.pathname}</p>
 <style>
 .language-switcher {
   display: flex;
   gap: 0.5em;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 0.5em;
 }
 .language-switcher a {
