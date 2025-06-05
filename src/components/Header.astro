@@ -3,11 +3,10 @@ import HeaderLink from './HeaderLink.astro';
 import SocialLinks from './SocialLinks.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { SITE_TITLE } from '../consts';
+
+const { lang = 'nl', nlPath = '/', enPath = '/en/' } = Astro.props;
+const getLink = (path) => lang === 'en' ? `/en${path}` : path;
 ---
-const { lang = 'nl' } = Astro.props;
-function getLink(path) {
-  return lang === 'en' ? `/en${path}` : path;
-}
 <header>
   <nav class="header-bar">
     <div class="header-content">
