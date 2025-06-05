@@ -4,7 +4,10 @@ import SocialLinks from './SocialLinks.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { SITE_TITLE } from '../consts';
 ---
-
+const { lang = 'nl' } = Astro.props;
+function getLink(path) {
+  return lang === 'en' ? `/en${path}` : path;
+}
 <header>
   <nav class="header-bar">
     <div class="header-content">
@@ -14,17 +17,28 @@ import { SITE_TITLE } from '../consts';
         </a>
       </div>
       <div class="header-section internal-links">
-        <HeaderLink href="/">Home</HeaderLink>
-        <HeaderLink href="/about">Over mij</HeaderLink>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/contact">Contact</HeaderLink>
+        <HeaderLink href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</HeaderLink>
+        <HeaderLink href={getLink('/about')}>{lang === 'en' ? 'About' : 'Over mij'}</HeaderLink>
+        <HeaderLink href={getLink('/blog')}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
+        <HeaderLink href={getLink('/contact')}>{lang === 'en' ? 'Contact' : 'Contact'}</HeaderLink>
       </div>
     </div>
   </nav>
   <div class="header-section header-socials">
     <SocialLinks />
   </div>
-  <LanguageSwitcher />
+  <nav class="language-switcher">
+    <a 
+      href={nlPath} 
+      class={lang === 'nl' ? 'active' : ''} 
+      onclick="localStorage.setItem('lang','nl')"
+    >Nederlands</a>
+    <a 
+      href={enPath} 
+      class={lang === 'en' ? 'active' : ''} 
+      onclick="localStorage.setItem('lang','en')"
+    >English</a>
+  </nav>
 </header>
 <style>
   .header-bar {
@@ -171,6 +185,25 @@ import { SITE_TITLE } from '../consts';
   }
   .social-links svg {
     display: block;
+  }
+  .language-switcher {
+    display: flex;
+    gap: 0.5em;
+    justify-content: flex-end;
+    margin: 0.5em;
+  }
+  .language-switcher a {
+    color: #330075;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.2em 0.7em;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .language-switcher a.active,
+  .language-switcher a:hover {
+    background: #d1baff;
+    color: #4B2067;
   }
   @media (max-width: 1000px) {
     .header-bar {
