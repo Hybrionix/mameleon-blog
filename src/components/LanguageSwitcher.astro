@@ -6,7 +6,7 @@ const currentPath = Astro.url.pathname;
   <a href={nlPath} class={lang === 'nl' ? 'active' : ''} onclick="localStorage.setItem('lang','nl')">Nederlands</a>
   <a href={enPath} class={lang === 'en' ? 'active' : ''} onclick="localStorage.setItem('lang','en')">English</a>
 </nav>
-<p>lang: {lang} | path: {Astro.url.pathname}</p>
+<!-- <p>lang: {lang} | path: {Astro.url.pathname}</p> -->
 <style>
 .language-switcher {
   display: flex;
