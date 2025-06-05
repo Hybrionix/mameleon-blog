@@ -6,9 +6,9 @@ import { getCollection, getEntryBySlug } from 'astro:content';
 export async function getStaticPaths() {
   // Only English blog posts: files ending with .en.md
   const allPosts = await getCollection('blog');
-  const enPosts = allPosts.filter(post => post.slug.endsWith('.en'));
+  const enPosts = allPosts.filter(post => post.id.endsWith('.en'));
   return enPosts.map(post => ({
-    params: { slug: post.slug.replace(/\.en$/, '') }
+    params: { slug: post.id.replace(/\.en$/, '') }
   }));
 }
 
