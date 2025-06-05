@@ -18,18 +18,12 @@ const today = new Date();
 const index = today.getDate() % quotes.length;
 const quote = quotes[index];
 ---
-<html lang="nl">
-  <head>
-    <title>Quote van de dag | Mameleon</title>
-    <meta name="description" content="Een inspirerende quote voor een goed gevoel, elke dag bij Mameleon." />
-  </head>
-  <body style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#f7f3ff;">
-    <main style="text-align:center;">
-      <h1 style="color:#4B2067;">Quote van de dag</h1>
-      <blockquote style="font-size:1.5em;font-style:italic;color:#3c285a;background:#fff3e6;padding:1em 2em;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin:2em 0;">
-        {quote}
-      </blockquote>
-      <p style="color:#888;">Kom morgen terug voor een nieuwe inspirerende quote!</p>
-    </main>
-  </body>
-</html>
+<Layout title={`Quote van de dag | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+  <main style="text-align:center;">
+    <h1 style="color:#4B2067;">Quote van de dag</h1>
+    <blockquote style="font-size:1.5em;font-style:italic;color:#3c285a;background:#fff3e6;padding:1em 2em;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin:2em 0;">
+      {quote}
+    </blockquote>
+    <p style="color:#888;">Kom morgen terug voor een nieuwe inspirerende quote!</p>
+  </main>
+</Layout>
