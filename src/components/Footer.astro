@@ -1,13 +1,24 @@
 ---
 import SocialLinks from './SocialLinks.astro';
 const today = new Date();
+const { lang = 'nl', nlPath = '/', enPath = '/en/' } = Astro.props;
 ---
 <footer>
   <div class="footer-content">
     <nav class="footer-links">
-      <a href="/algemene-voorwaarden" target="_blank" rel="noopener">Algemene voorwaarden</a>
-      <span>|</span>
-      <a href="/privacy-verklaring" target="_blank" rel="noopener">Privacy verklaring</a>
+      {lang === 'en' ? (
+        <>
+          <a href="/terms" target="_blank" rel="noopener">Terms & Conditions</a>
+          <span>|</span>
+          <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+        </>
+      ) : (
+        <>
+          <a href="/algemene-voorwaarden" target="_blank" rel="noopener">Algemene voorwaarden</a>
+          <span>|</span>
+          <a href="/privacy-verklaring" target="_blank" rel="noopener">Privacy verklaring</a>
+        </>
+      )}
     </nav>
     <SocialLinks />
     <div class="footer-copyright">
