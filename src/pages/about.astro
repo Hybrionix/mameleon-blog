@@ -1,16 +1,28 @@
 ---
 import Layout from '../layouts/MainLayout.astro';
+import { getLangProps } from '../utils/lang.js';
+
+const { lang, nlPath, enPath } = getLangProps(Astro.url.pathname);
 ---
 
-<Layout title="Over Mij" description="Over Mij">
-  <h1>Over Mij</h1>
+<Layout title="Over Mij" description="Over Mij" lang={lang} nlPath={nlPath} enPath={enPath}>
+  <h1>{lang === 'en' ? 'About Me' : 'Over Mij'}</h1>
   <p>
-    Hoi! Mijn naam is Roxy, trotse moeder van vier kinderen. Met meer dan 20 jaar ervaring in de kinderopvang, gastouderopvang en coaching, heb ik een passie ontwikkeld voor het begeleiden en inspireren van kinderen én volwassenen.
+    {lang === 'en'
+      ? "Hi! My name is Roxy, proud mother of four. With over 20 years of experience in childcare, childminding, and coaching, I have developed a passion for guiding and inspiring both children and adults."
+      : "Hoi! Mijn naam is Roxy, trotse moeder van vier kinderen. Met meer dan 20 jaar ervaring in de kinderopvang, gastouderopvang en coaching, heb ik een passie ontwikkeld voor het begeleiden en inspireren van kinderen én volwassenen."
+    }
   </p>
   <p>
-    Ik geloof dat iedereen uniek is en het verdient om te groeien op zijn of haar eigen manier. Vanuit die overtuiging help ik anderen om het beste uit zichzelf te halen, zowel op persoonlijk als professioneel vlak.
+    {lang === 'en'
+      ? "I believe everyone is unique and deserves to grow in their own way. From that conviction, I help others get the best out of themselves, both personally and professionally."
+      : "Ik geloof dat iedereen uniek is en het verdient om te groeien op zijn of haar eigen manier. Vanuit die overtuiging help ik anderen om het beste uit zichzelf te halen, zowel op persoonlijk als professioneel vlak."
+    }
   </p>
   <p>
-    Met Mameleon wil ik mijn kennis, ervaring en enthousiasme delen om samen te bouwen aan een inspirerende toekomst!
+    {lang === 'en'
+      ? "With Mameleon, I want to share my knowledge, experience, and enthusiasm to build an inspiring future together!"
+      : "Met Mameleon wil ik mijn kennis, ervaring en enthousiasme delen om samen te bouwen aan een inspirerende toekomst!"
+    }
   </p>
 </Layout>
