@@ -9,7 +9,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 const allPosts = await getCollection('blog');
 console.log(allPosts); // Add this line for debugging
 
-const posts = allPosts;
+const posts = allPosts.filter(post => post.data.lang === "nl");
 ---
 
 <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -20,7 +20,7 @@ const posts = allPosts;
             {
                 posts.map((post) => (
                     <li>
-                        <a href={`/blog/${post.id}/`}>
+                        <a href={`/blog/${post.slug}/`}>
                             <img width={720} height={360} src={post.data.heroImage} alt="" />
                             <h4 class="title">{post.data.title}</h4>
                             <p class="date">

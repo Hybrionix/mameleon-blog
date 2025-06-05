@@ -6,9 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog'))
-  .filter(post => post.data.lang === 'en')
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = allPosts.filter(post => post.data.lang === "en");
 ---
 
 <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -19,7 +17,7 @@ const posts = (await getCollection('blog'))
             {
                 posts.map((post) => (
                     <li>
-                        <a href={`/blog/${post.id}/`}>
+                        <a href={`/blog/${post.slug}/`}>
                             <img width={720} height={360} src={post.data.heroImage} alt="" />
                             <h4 class="title">{post.data.title}</h4>
                             <p class="date">
