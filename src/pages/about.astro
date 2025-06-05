@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/MainLayout.astro';
+import { getLangProps } from '../utils/lang.js';
+
+const { lang, nlPath, enPath } = getLangProps(Astro.url.pathname);
 ---
 
 <Layout title="Over Mij" description="Over Mij">
