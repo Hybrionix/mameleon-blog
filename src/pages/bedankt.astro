@@ -1,16 +1,14 @@
 ---
 import Layout from '../layouts/MainLayout.astro';
-import { getLangProps } from '../utils/lang.js';
-
-const { lang, nlPath, enPath } = getLangProps(Astro.url.pathname);
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
-
-<Layout title={lang === 'en' ? 'Thank You' : 'Bedankt'} description={lang === 'en' ? 'Thank You' : 'Bedankt'} lang={lang} nlPath={nlPath} enPath={enPath}>
-  <h1>{lang === 'en' ? 'Thank You!' : 'Bedankt!'}</h1>
-  <p>
-    {lang === 'en'
-      ? "Your message has been received. We will contact you as soon as possible."
-      : "Je bericht is ontvangen. We nemen zo snel mogelijk contact met je op."
-    }
-  </p>
-</Layout>
+<html lang="en">
+  <body>
+    <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+      <h1>Bedankt voor je bericht!</h1>
+      <p>
+        Bedankt voor je bericht we nemen zo spoedig mogelijk contact met je op.
+      </p>
+    </Layout>
+  </body>
+</html>
