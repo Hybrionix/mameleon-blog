@@ -1,0 +1,22 @@
+---
+// filepath: src/pages/blog/[slug].astro
+import Layout from '../../layouts/MainLayout.astro';
+import { getEntryBySlug } from 'astro:content';
+
+const { slug } = Astro.params;
+
+// Load the English version: Official.en.md
+const post = await getEntryBySlug('blog', `${slug}.en`);
+
+if (!post) {
+  throw new Error(`English blog post not found: ${slug}`);
+}
+---
+<Layout title={post.data.title} description={post.data.description} lang="en">
+  <article>
+    <h1>{post.data.title}</h1>
+    <img src={post.data.heroImage} alt="" />
+    <p>{post.data.pubDate}</p>
+    <div innerHTML={post.body} />
+  </article>
+</Layout>
