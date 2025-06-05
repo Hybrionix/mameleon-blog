@@ -17,3 +17,20 @@ const { title, description } = Astro.props;
   <slot />
 </main>
 <Footer />
+<head>
+  <!-- ...existing head content... -->
+  <script>
+    // Only run on the client
+    (function() {
+      const lang = localStorage.getItem('lang');
+      const path = window.location.pathname;
+      if (lang === 'en' && !path.startsWith('/en/')) {
+        // Redirect to English version if not already there
+        window.location.pathname = '/en' + (path === '/' ? '' : path);
+      } else if (lang === 'nl' && path.startsWith('/en/')) {
+        // Redirect to Dutch version if not already there
+        window.location.pathname = path.replace(/^\/en/, '') || '/';
+      }
+    })();
+  </script>
+</head>
