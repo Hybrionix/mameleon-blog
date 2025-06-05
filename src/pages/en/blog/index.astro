@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../../components/FormattedDate.astro';
 
 const allPosts = await getCollection('blog');
-const posts = allPosts.filter(post => post.data.lang === "nl");
+const posts = allPosts.filter(post => post.data.lang === "en");
 ---
 
 <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
