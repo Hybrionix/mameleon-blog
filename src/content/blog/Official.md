@@ -1,8 +1,8 @@
 ---
-title: "Official Start"
-description: "Our official start will be June 6th 2025!"
+title: "Officiale Start"
+description: "We starten officieel 6 Juni 2025!"
 pubDate: "Jun 2 2025"
 heroImage: "/mameleon.png"
 lang: "nl"
 ---
-Our official start will be June 6th 2025!
+We starten officieel 6 Juni 2025!
