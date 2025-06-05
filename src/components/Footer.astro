@@ -1,13 +1,24 @@
 ---
 import SocialLinks from './SocialLinks.astro';
 const today = new Date();
+const isEnglish = Astro.url.pathname.startsWith('/en');
 ---
 <footer>
   <div class="footer-content">
     <nav class="footer-links">
-      <a href="/algemene-voorwaarden" target="_blank" rel="noopener">Algemene voorwaarden</a>
-      <span>|</span>
-      <a href="/privacy-verklaring" target="_blank" rel="noopener">Privacy verklaring</a>
+      {isEnglish ? (
+        <>
+          <a href="/en/terms-and-conditions" target="_blank" rel="noopener">Terms & Conditions</a>
+          <span>|</span>
+          <a href="/en/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+        </>
+      ) : (
+        <>
+          <a href="/algemene-voorwaarden" target="_blank" rel="noopener">Algemene voorwaarden</a>
+          <span>|</span>
+          <a href="/privacy-verklaring" target="_blank" rel="noopener">Privacy verklaring</a>
+        </>
+      )}
     </nav>
     <SocialLinks />
     <div class="footer-copyright">
