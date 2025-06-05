@@ -6,7 +6,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog'))
+const allPosts = await getCollection('blog');
+console.log(allPosts); // Add this line for debugging
+
+const posts = allPosts
   .filter(post => post.data.lang === 'nl')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
