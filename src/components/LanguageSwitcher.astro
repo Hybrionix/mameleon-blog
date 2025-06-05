@@ -1,28 +1,10 @@
 ---
-const languages = [
-  { code: 'nl', name: 'Nederlands', path: '/' },
-  { code: 'en', name: 'English', path: '/en/' },
-];
+const { nlPath = '/', enPath = '/en/' } = Astro.props;
 const currentPath = Astro.url.pathname;
-
-// Helper to check if currentPath is exactly the language root
-function isActive(langPath) {
-  if (langPath === '/') {
-    return currentPath === '/';
-  }
-  return currentPath === langPath || currentPath.startsWith(langPath);
-}
 ---
 <nav class="language-switcher">
-  {languages.map(lang => (
-    <a
-      href={lang.path}
-      class={isActive(lang.path) ? 'active' : ''}
-      aria-current={isActive(lang.path) ? 'page' : undefined}
-    >
-      {lang.name}
-    </a>
-  ))}
+  <a href={nlPath} class={currentPath === nlPath ? 'active' : ''}>Nederlands</a>
+  <a href={enPath} class={currentPath === enPath ? 'active' : ''}>English</a>
 </nav>
 <style>
 .language-switcher {
