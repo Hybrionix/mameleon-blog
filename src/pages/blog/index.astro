@@ -9,9 +9,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 const allPosts = await getCollection('blog');
 console.log(allPosts); // Add this line for debugging
 
-const posts = allPosts
-  .filter(post => post.data.lang === 'nl')
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = allPosts;
 ---
 
 <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
