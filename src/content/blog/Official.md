@@ -1,5 +1,5 @@
 ---
-title: "Officiale Start"
+title: "Officiële Start"
 description: "We starten officieel 6 Juni 2025!"
 pubDate: "Jun 2 2025"
 heroImage: "/mameleon.png"
