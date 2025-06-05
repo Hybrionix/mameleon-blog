@@ -8,15 +8,15 @@ const isEnglish = Astro.url.pathname.startsWith('/en');
     <nav class="footer-links">
       {isEnglish ? (
         <>
-          <a href="/en/terms-and-conditions" target="_blank" rel="noopener">Terms & Conditions</a>
+          <a href="/en/terms-and-conditions">Terms & Conditions</a>
           <span>|</span>
-          <a href="/en/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+          <a href="/en/privacy-policy">Privacy Policy</a>
         </>
       ) : (
         <>
-          <a href="/algemene-voorwaarden" target="_blank" rel="noopener">Algemene voorwaarden</a>
+          <a href="/algemene-voorwaarden">Algemene voorwaarden</a>
           <span>|</span>
-          <a href="/privacy-verklaring" target="_blank" rel="noopener">Privacy verklaring</a>
+          <a href="/privacy-verklaring">Privacy verklaring</a>
         </>
       )}
     </nav>
