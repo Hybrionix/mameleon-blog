@@ -3,38 +3,37 @@ import Layout from '../layouts/MainLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 const quotes = [
-  "Believe you can and you're halfway there.",
-  "Every day is a new beginning.",
-  "You are capable of amazing things.",
-  "Let your smile change the world.",
-  "Start each day with a grateful heart.",
-  "Do something today that your future self will thank you for.",
-  "Happiness is not by chance, but by choice.",
-  "You are stronger than you think.",
-  "Be the reason someone smiles today.",
-  "Dream big, work hard, stay positive.",
-  "Focus on the good.",
-  "You are your only limit.",
-  "Small steps every day.",
-  "Shine bright, the world needs your light.",
-  "You are enough.",
-  "Grow through what you go through.",
-  "Choose kindness and laugh often.",
-  "Let your dreams be bigger than your fears.",
-  "Progress, not perfection.",
-  "Enjoy the little things.",
-  "Your potential is endless.",
-  "Stay positive, work hard, make it happen.",
-  "You’ve got this.",
-  "Be fearless in the pursuit of what sets your soul on fire.",
-  "Mistakes are proof you are trying.",
-  "Keep going, you’re getting there.",
-  "The best is yet to come.",
-  "You are a work of art.",
-  "Make today amazing.",
-  "Your vibe attracts your tribe.",
-  "Take time to do what makes your soul happy.",
-  "You are the author of your own story."
+  "Geloof in jezelf en je bent al halverwege.",
+  "Elke dag is een nieuw begin.",
+  "Je bent tot geweldige dingen in staat.",
+  "Laat jouw glimlach de wereld veranderen.",
+  "Begin elke dag met een dankbaar hart.",
+  "Doe vandaag iets waar je toekomstige zelf je voor zal bedanken.",
+  "Geluk is geen toeval, maar een keuze.",
+  "Je bent sterker dan je denkt.",
+  "Wees de reden dat iemand vandaag lacht.",
+  "Droom groot, werk hard, blijf positief.",
+  "Focus op het goede.",
+  "Jij bent je enige limiet.",
+  "Elke dag een kleine stap vooruit.",
+  "Schitter, de wereld heeft jouw licht nodig.",
+  "Je bent genoeg.",
+  "Groei door wat je meemaakt.",
+  "Kies voor vriendelijkheid en lach vaak.",
+  "Laat je dromen groter zijn dan je angsten.",
+  "Vooruitgang, geen perfectie.",
+  "Geniet van de kleine dingen.",
+  "Jouw potentieel is eindeloos.",
+  "Blijf positief, werk hard, maak het waar.",
+  "Je kunt dit.",
+  "Wees niet bang om te stralen.",
+  "Fouten maken is het bewijs dat je probeert.",
+  "Blijf doorgaan, je komt er wel.",
+  "Het beste moet nog komen.",
+  "Jij bent een kunstwerk.",
+  "Maak van vandaag iets moois.",
+  "Jouw energie trekt de juiste mensen aan.",
+  "Neem tijd voor wat je gelukkig maakt."
 ];
 const today = new Date();
 const index = (today.getDate() - 1) % quotes.length;
@@ -43,7 +42,7 @@ const quote = quotes[index];
 <Layout title={`Quote van de dag | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
   <main style="text-align:center;">
     <h1 style="color:#4B2067;">Quote van de dag</h1>
-    <blockquote style="font-size:1.1em;font-style:italic;color:#3c285a;background:#fff3e6;padding:0.7em 1.2em;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin:1.2em 0;display:inline-block;max-width:350px;">
+    <blockquote style="font-size:1em;font-style:italic;color:#3c285a;background:#fff3e6;padding:0.5em 1em;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.05);margin:1em 0;display:inline-block;max-width:250px;">
       {quote}
     </blockquote>
     <p style="color:#888;font-size:0.95em;">Kom morgen terug voor een nieuwe inspirerende quote!</p>
