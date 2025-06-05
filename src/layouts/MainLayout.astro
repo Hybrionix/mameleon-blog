@@ -4,10 +4,6 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const { title, description, lang = 'nl', nlPath = '/', enPath = '/en/' } = Astro.props;
-const path = Astro.url.pathname;
-const lang = path.startsWith('/en') ? 'en' : 'nl';
-const nlPath = lang === 'en' ? path.replace(/^\/en/, '') || '/' : path;
-const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
 ---
 <BaseHead title={title} description={description} />
 <script>
