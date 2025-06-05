@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const { title, description } = Astro.props;
+const { title, description, lang = 'nl', nlPath = '/', enPath = '/en/' } = Astro.props;
 const path = Astro.url.pathname;
 const lang = path.startsWith('/en') ? 'en' : 'nl';
 const nlPath = lang === 'en' ? path.replace(/^\/en/, '') || '/' : path;
@@ -30,4 +30,4 @@ const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
 <main>
   <slot />
 </main>
-<Footer />
+<Footer lang={lang} nlPath={nlPath} enPath={enPath} />
