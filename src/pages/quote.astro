@@ -12,10 +12,32 @@ const quotes = [
   "Happiness is not by chance, but by choice.",
   "You are stronger than you think.",
   "Be the reason someone smiles today.",
-  "Dream big, work hard, stay positive."
+  "Dream big, work hard, stay positive.",
+  "Focus on the good.",
+  "You are your only limit.",
+  "Small steps every day.",
+  "Shine bright, the world needs your light.",
+  "You are enough.",
+  "Grow through what you go through.",
+  "Choose kindness and laugh often.",
+  "Let your dreams be bigger than your fears.",
+  "Progress, not perfection.",
+  "Enjoy the little things.",
+  "Your potential is endless.",
+  "Stay positive, work hard, make it happen.",
+  "You’ve got this.",
+  "Be fearless in the pursuit of what sets your soul on fire.",
+  "Mistakes are proof you are trying.",
+  "Keep going, you’re getting there.",
+  "The best is yet to come.",
+  "You are a work of art.",
+  "Make today amazing.",
+  "Your vibe attracts your tribe.",
+  "Take time to do what makes your soul happy.",
+  "You are the author of your own story."
 ];
 const today = new Date();
-const index = today.getDate() % quotes.length;
+const index = (today.getDate() - 1) % quotes.length;
 const quote = quotes[index];
 ---
 <Layout title={`Quote van de dag | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
