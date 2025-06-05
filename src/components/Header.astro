@@ -12,12 +12,14 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     <div class="header-content">
       <div class="header-section logo-image">
         <img src="/mameleon_transparant_430.png" alt="Mameleon Logo" />
-      </div>    
+      </div>
+      <!--    
       <div class="header-section site-title">
         <a href="/">
           <span class="rainbow-text">Mameleon</span>
         </a>
       </div>
+      -->
       <div class="header-section internal-links">
         <HeaderLink href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</HeaderLink>
         <HeaderLink href={getLink('/about')}>{lang === 'en' ? 'About' : 'Over mij'}</HeaderLink>
@@ -142,7 +144,7 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     display: flex;
     gap: 1em;
     justify-content: center;
-    padding-left: 120px;
+    padding-left: 380px;
   }
   .internal-links a,
   .internal-links button,
