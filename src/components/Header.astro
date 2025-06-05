@@ -110,28 +110,20 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     z-index: -1;
   }
   .rainbow-text {
-    background-image: url('/mameleon_transparant_500.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    
+    background: linear-gradient(90deg, #a16ae8 0%, #e573c7 40%, #ff69b4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* Also add these for broader support */
     background-clip: text;
-    color: transparent;
-
+    text-fill-color: transparent;
     font-size: 2.2em;
     font-weight: 900;
     letter-spacing: 2px;
     display: inline-block;
-
-    /* Optional: text-shadow might reduce visibility, try removing or adjusting */
-    /* text-shadow:
+    /* 3D text border effect */
+    text-shadow:
       2px 2px 0 #330075,
       3px 3px 6px #fff,
-      0 2px 8px #a16ae8; */
+      0 2px 8px #a16ae8;
   }
   .internal-links {
     display: flex;
