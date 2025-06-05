@@ -1,9 +1,11 @@
 ---
 import Layout from '../../layouts/MainLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getLangProps } from '../../utils/lang.js';
 
-const { lang, nlPath, enPath } = getLangProps(Astro.url.pathname);
+const path = Astro.url.pathname;
+const lang = path.startsWith('/en') ? 'en' : 'nl';
+const nlPath = lang === 'en' ? path.replace(/^\/en/, '') || '/' : path;
+const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
 ---
 <html lang="en">
   <body>

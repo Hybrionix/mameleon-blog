@@ -1,19 +1,10 @@
 ---
 import Layout from '../layouts/MainLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getLangProps } from '../utils/lang.js';
-
-const { lang, nlPath, enPath } = getLangProps(Astro.url.pathname);
 ---
 <html lang="nl">
   <body>
-    <Layout 
-      title={SITE_TITLE} 
-      description={SITE_DESCRIPTION}
-      lang={lang}
-      nlPath={nlPath}
-      enPath={enPath}
-    >
+    <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
       <h1>🧑 Welkom bij Mameleon!</h1>
       <p>
         Fijn dat je onze website bezoekt. Mameleon is een nieuw en ambitieus bedrijf, gespecialiseerd in het ontwikkelen van inspirerende materialen op het gebied van coaching en persoonlijke groei.
