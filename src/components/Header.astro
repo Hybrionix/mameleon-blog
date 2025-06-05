@@ -10,6 +10,9 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
 <header>
   <nav class="header-bar">
     <div class="header-content">
+      <div class="header-section logo-image">
+        <img src="/mameleon_transparant_500.png" alt="Mameleon Logo" />
+      </div>    
       <div class="header-section site-title">
         <a href="/">
           <span class="rainbow-text">Mameleon</span>
@@ -40,6 +43,16 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   </nav>
 </header>
 <style>
+.logo-image {
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}
+.logo-image img {
+  width: 50px; /* or whatever size fits your design */
+  height: auto;
+  object-fit: contain;
+}
   .header-bar {
     width: 100%;
     margin: 0;
