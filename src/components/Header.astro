@@ -25,7 +25,7 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
       <div class="header-section internal-links">
         <HeaderLink href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</HeaderLink>
         <HeaderLink href={getLink('/about')}>{lang === 'en' ? 'About' : 'Over mij'}</HeaderLink>
-        <HeaderLink href={getLink('/blog')}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
+        <HeaderLink href={lang === 'en' ? '/blog/en/' : '/blog/nl/'}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
         <HeaderLink href={getLink('/contact')}>{lang === 'en' ? 'Contact' : 'Contact'}</HeaderLink>
       </div>
     </div>
