@@ -16,15 +16,15 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
           <img src="/mameleon_transparant_430.png" alt="Mameleon Logo" />
         </a>
       </div>
-      <!-- Desktop menu -->
-      <div class="header-section internal-links">
-        <HeaderLink href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</HeaderLink>
-        <HeaderLink href={getLink('/about')}>{lang === 'en' ? 'About' : 'Over mij'}</HeaderLink>
-        <HeaderLink href={lang === 'en' ? '/en/blog/' : '/blog/'}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
-        <HeaderLink href={getLink('/contact')}>{lang === 'en' ? 'Contact' : 'Contact'}</HeaderLink>
+      <div class="header-center">
+        <div class="header-section internal-links">
+          <HeaderLink href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</HeaderLink>
+          <HeaderLink href={getLink('/about')}>{lang === 'en' ? 'About' : 'Over mij'}</HeaderLink>
+          <HeaderLink href={lang === 'en' ? '/en/blog/' : '/blog/'}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
+          <HeaderLink href={getLink('/contact')}>{lang === 'en' ? 'Contact' : 'Contact'}</HeaderLink>
+        </div>
+        <HamburgerMenu lang={lang} />
       </div>
-      <!-- Hamburger menu for mobile -->
-      <HamburgerMenu lang={lang} />
       <div class="header-section language-switcher-section">
         <LanguageSwitcher lang={lang} nlPath={nlPath} enPath={enPath} />
       </div>
@@ -68,12 +68,10 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     display: flex;
     align-items: center;
     width: 100%;
-    gap: 0.7em;
     max-width: 1000px;
     margin: 0 auto;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 0.7em;
+    justify-content: space-between;
   }
   header {
     /* margin: 10px 0 0 0; */
@@ -191,7 +189,8 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     display: block;
   }
   .language-switcher-section {
-  margin-left: auto;
+  margin-left: 0;
+  margin-right: 0;
   display: flex;
   align-items: center;
   padding-left: 1em;
