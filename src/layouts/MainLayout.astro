@@ -6,17 +6,23 @@ import Footer from '../components/Footer.astro';
 const { title, description } = Astro.props;
 const path = Astro.url.pathname;
 
+// Detect language from path and localStorage
 let lang = 'nl';
 if (typeof window !== 'undefined') {
-  // On client: use localStorage if available
   lang = localStorage.getItem('lang') || (path.startsWith('/en/') ? 'en' : 'nl');
 } else {
-  // On server: fallback to path
   lang = path.startsWith('/en/') ? 'en' : 'nl';
 }
 
-let nlPath = '/blog/';
-let enPath = '/en/blog/';
+// Universal language switch paths
+let nlPath, enPath;
+if (path.startsWith('/en/')) {
+  nlPath = path.replace(/^\/en/, '') || '/';
+  enPath = path;
+} else {
+  nlPath = path;
+  enPath = path === '/' ? '/en' : '/en' + path;
+}
 ---
 <BaseHead title={title} description={description} />
 <Header lang={lang} nlPath={nlPath} enPath={enPath} />
