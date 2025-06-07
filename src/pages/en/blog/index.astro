@@ -18,7 +18,7 @@ const blogPrefix = '/en/blog/';
         {
           posts.map((post) => (
             <li>
-              <a href={`${blogPrefix}${post.slug}/`}>
+              <a href={`/en/blog/${post.slug}/`}>
                 <img width={720} height={360} src={post.data.heroImage} alt="" />
                 <h4 class="title">{post.data.title}</h4>
                 <p class="date">
@@ -30,6 +30,7 @@ const blogPrefix = '/en/blog/';
         }
       </ul>
     </section>
+    <pre>{JSON.stringify(allPosts.map(p => p.id), null, 2)}</pre>
   </main>
   <style>
     ul {
