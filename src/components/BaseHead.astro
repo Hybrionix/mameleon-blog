@@ -54,12 +54,12 @@ const orgDescription = description && description.length > 30 ? description : OR
 
 <!-- Structured Data (Organization) -->
 <script type="application/ld+json">
-  {
+  {JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Mameleon",
     "url": "https://www.mameleon.com",
-    "description": {JSON.stringify(orgDescription)},
+    "description": orgDescription,
     "logo": "https://www.mameleon.com/mameleon_transparant_430.png"
-  }
+  })}
 </script>
