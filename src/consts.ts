@@ -3,4 +3,3 @@
 
 export const SITE_TITLE = "Mameleon";
 export const SITE_DESCRIPTION = "Welkom bij Mameleon!";
-export const ORG_DESCRIPTION = "Mameleon is gespecialiseerd in het ontwikkelen van inspirerende materialen op het gebied van coaching en persoonlijke groei.";

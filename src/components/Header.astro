@@ -10,22 +10,15 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
 <header>
   <nav class="header-bar">
     <div class="header-content">
-      <div class="header-section logo-image">
-        <a href="/">
-          <img src="/mameleon_transparant_430.png" alt="Mameleon Logo" />
-        </a>
-      </div>
-      <!--    
       <div class="header-section site-title">
         <a href="/">
           <span class="rainbow-text">Mameleon</span>
         </a>
       </div>
-      -->
       <div class="header-section internal-links">
         <HeaderLink href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</HeaderLink>
         <HeaderLink href={getLink('/about')}>{lang === 'en' ? 'About' : 'Over mij'}</HeaderLink>
-        <HeaderLink href={lang === 'en' ? '/blog/en/' : '/blog/nl/'}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
+        <HeaderLink href={getLink('/blog')}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
         <HeaderLink href={getLink('/contact')}>{lang === 'en' ? 'Contact' : 'Contact'}</HeaderLink>
       </div>
     </div>
@@ -47,16 +40,6 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   </nav>
 </header>
 <style>
-.logo-image {
-  display: flex;
-  align-items: center;
-  margin-right: 1em;
-}
-.logo-image img {
-  width: 150px; /* or whatever size fits your design */
-  height: auto;
-  object-fit: contain;
-}
   .header-bar {
     width: 100%;
     margin: 0;
@@ -77,7 +60,7 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     border-bottom: 2px solid #4B2067;
   }
   .header-content {
-    max-width: 1920px;
+    max-width: 1000px;
     margin: 0 auto;
     width: 100%;
     display: flex;
@@ -146,7 +129,7 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     display: flex;
     gap: 1em;
     justify-content: center;
-    padding-left: 380px;
+    padding-left: 120px;
   }
   .internal-links a,
   .internal-links button,
@@ -233,40 +216,22 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
       flex-direction: column;
       align-items: stretch;
       gap: 0.5em;
-      width: 100%;
-      max-width: 100%;
-      padding: 0.5em 0.5em;
     }
-    .header-content {
-      flex-direction: column;
-      align-items: center;
-      gap: 0.7em;
-      padding: 0;
-    }
-    .logo-image {
+    .site-title {
       justify-content: center;
-      margin: 0 0 0.5em 0;
+      font-size: 1.5em;
     }
     .internal-links {
       justify-content: center;
       flex-wrap: wrap;
       gap: 0.5em;
-      padding-left: 0;
-      margin-bottom: 0.5em;
     }
     .header-socials {
       justify-content: center;
       width: 100%;
-      margin: 0.5em 0;
-      background-color: transparent;
-      border-bottom: none;
     }
     .social-links {
       justify-content: center;
-    }
-    .language-switcher {
-      justify-content: center;
-      margin: 0.5em 0 0.2em 0;
     }
   }
   @media (max-width: 600px) {
@@ -280,9 +245,6 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     .social-links svg {
       width: 22px;
       height: 22px;
-    }
-    .logo-image img {
-      width: 110px;
     }
   }
 </style>

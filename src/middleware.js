@@ -1,13 +1,4 @@
 export async function onRequest(context, next) {
-  const url = new URL(context.request.url);
-  const pathname = url.pathname;
-
-  // If the path contains any uppercase letters, redirect to lowercase
-  if (/[A-Z]/.test(pathname)) {
-    url.pathname = pathname.toLowerCase();
-    return Response.redirect(url.toString(), 301);
-  }
-
   const response = await next();
 
   // Set your cache headers
