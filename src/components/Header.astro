@@ -2,6 +2,7 @@
 import HeaderLink from './HeaderLink.astro';
 import SocialLinks from './SocialLinks.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import HamburgerMenu from './HamburgerMenu.astro';
 import { SITE_TITLE } from '../consts';
 
 const { lang = 'nl', nlPath = '/blog/', enPath = '/en/blog/' } = Astro.props;
@@ -15,19 +16,15 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
           <img src="/mameleon_transparant_430.png" alt="Mameleon Logo" />
         </a>
       </div>
-      <!--    
-      <div class="header-section site-title">
-        <a href="/">
-          <span class="rainbow-text">Mameleon</span>
-        </a>
-      </div>
-      -->
+      <!-- Desktop menu -->
       <div class="header-section internal-links">
         <HeaderLink href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</HeaderLink>
         <HeaderLink href={getLink('/about')}>{lang === 'en' ? 'About' : 'Over mij'}</HeaderLink>
         <HeaderLink href={lang === 'en' ? '/en/blog/' : '/blog/'}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
         <HeaderLink href={getLink('/contact')}>{lang === 'en' ? 'Contact' : 'Contact'}</HeaderLink>
       </div>
+      <!-- Hamburger menu for mobile -->
+      <HamburgerMenu lang={lang} />
     </div>
   </nav>
   <div class="header-section header-socials">
@@ -240,6 +237,16 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
       justify-content: center;
     }
   }
+  @media (max-width: 800px) {
+  .internal-links {
+    display: none !important;
+  }
+}
+@media (min-width: 801px) {
+  .hamburger-menu {
+    display: none !important;
+  }
+}
   @media (max-width: 600px) {
     .site-title {
       font-size: 1.1em;
