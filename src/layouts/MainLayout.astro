@@ -9,34 +9,38 @@ const lang = path.startsWith('/en') ? 'en' : 'nl';
 const nlPath = lang === 'en' ? path.replace(/^\/en/, '') || '/' : path;
 const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
 ---
-<BaseHead title={title} description={description} />
-<script>
-  // Domain redirect
-  if (location.hostname === 'mameleon.com') {
-    location.href = 'https://www.mameleon.com' + location.pathname + location.search + location.hash;
-  }
-  // Language redirect
-  (function() {
-    const lang = localStorage.getItem('lang');
-    const path = window.location.pathname;
-    if (lang === 'en' && !path.startsWith('/en/')) {
-      window.location.pathname = '/en' + (path === '/' ? '' : path);
-    } else if (lang === 'nl' && path.startsWith('/en/')) {
-      window.location.pathname = path.replace(/^\/en/, '') || '/';
-    }
-  })();
-</script>
-<Header lang={lang} nlPath={nlPath} enPath={enPath} />
-<main>
-  <slot />
-</main>
-<Footer />
-<script>
-  window.addEventListener('pageshow', function(event) {
-    if (event.persisted) {
-      window.location.reload();
-    }
-  });
-</script>
-</body>
+<html lang={lang}>
+  <head>
+    <BaseHead title={title} description={description} />
+    <script>
+      // Domain redirect
+      if (location.hostname === 'mameleon.com') {
+        location.href = 'https://www.mameleon.com' + location.pathname + location.search + location.hash;
+      }
+      // Language redirect
+      (function() {
+        const lang = localStorage.getItem('lang');
+        const path = window.location.pathname;
+        if (lang === 'en' && !path.startsWith('/en/')) {
+          window.location.pathname = '/en' + (path === '/' ? '' : path);
+        } else if (lang === 'nl' && path.startsWith('/en/')) {
+          window.location.pathname = path.replace(/^\/en/, '') || '/';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <Header lang={lang} nlPath={nlPath} enPath={enPath} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+          window.location.reload();
+        }
+      });
+    </script>
+  </body>
 </html>
