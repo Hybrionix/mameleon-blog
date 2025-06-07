@@ -22,16 +22,17 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
 }
 @media (max-width: 800px) {
   .hamburger-menu {
-    display: block;
+    display: flex;
+    align-items: center;
+    position: static;
     z-index: 1001;
+    margin-left: 1em;
   }
   #menu__toggle {
     opacity: 0;
   }
   .menu__btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
+    position: relative;
     width: 54px;      /* was 36px */
     height: 54px;     /* was 36px */
     cursor: pointer;
