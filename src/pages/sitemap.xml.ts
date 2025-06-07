@@ -1,15 +1,12 @@
 import { getCollection } from 'astro:content';
 
 function getValidDate(date: any): string {
-  // If date is a Date object, format it
   if (date instanceof Date) {
     return date.toISOString().split('T')[0];
   }
-  // If date is a string in YYYY-MM-DD format, use it
   if (typeof date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
     return date;
   }
-  // Otherwise, use today's date
   return new Date().toISOString().split('T')[0];
 }
 
@@ -34,20 +31,28 @@ export async function GET() {
 
   const posts = await getCollection('blog');
   const blogPages = posts.flatMap((post) => {
-    const slug = post.slug || post.id.replace(/\.(md|mdx)$/i, '').toLowerCase();
+    const id = post.id.toLowerCase();
+    const slug = post.slug || id.replace(/\.(md|mdx)$/i, '');
     let date = post.data.updated || post.data.pubDate;
     const lastmod = getValidDate(date);
 
-    return [
-      {
-        url: `https://www.mameleon.com/blog/${slug}/`,
-        lastmod,
-      },
-      {
-        url: `https://www.mameleon.com/en/blog/${slug}/`,
-        lastmod,
-      },
-    ];
+    // English if filename ends with .en.md or .en.mdx
+    if (id.endsWith('.en.md') || id.endsWith('.en.mdx')) {
+      return [
+        {
+          url: `https://www.mameleon.com/en/blog/${slug.replace(/\.en$/, '')}/`,
+          lastmod,
+        },
+      ];
+    } else {
+      // Dutch (default)
+      return [
+        {
+          url: `https://www.mameleon.com/blog/${slug}/`,
+          lastmod,
+        },
+      ];
+    }
   });
 
   const allPages = [...basePages, ...enPages, ...blogPages];
