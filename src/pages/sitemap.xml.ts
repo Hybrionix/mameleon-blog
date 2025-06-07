@@ -30,79 +30,43 @@ export async function GET() {
   ];
 
   const posts = await getCollection('blog');
-
-  // Build a map of base slugs to their language versions
-  const blogMap: Record<string, { nl?: any; en?: any }> = {};
-  for (const post of posts) {
+  const blogPages = posts.flatMap((post) => {
     const id = post.id.toLowerCase();
     const slug = post.slug || id.replace(/\.(md|mdx)$/i, '');
-    const baseSlug = slug.replace(/\.en$/, '');
-    const isEnglish = id.endsWith('.en.md') || id.endsWith('.en.mdx');
-    if (!blogMap[baseSlug]) blogMap[baseSlug] = {};
-    if (isEnglish) {
-      blogMap[baseSlug].en = post;
+    let date = post.data.updated || post.data.pubDate;
+    const lastmod = getValidDate(date);
+
+    // English if filename ends with .en.md or .en.mdx
+    if (id.endsWith('.en.md') || id.endsWith('.en.mdx')) {
+      return [
+        {
+          url: `https://www.mameleon.com/en/blog/${slug.replace(/\.en$/, '')}/`,
+          lastmod,
+        },
+      ];
     } else {
-      blogMap[baseSlug].nl = post;
+      // Dutch (default)
+      return [
+        {
+          url: `https://www.mameleon.com/blog/${slug}/`,
+          lastmod,
+        },
+      ];
     }
-  }
-
-  // Generate blog URLs with hreflang alternates
-  const blogPages = Object.entries(blogMap).flatMap(([baseSlug, langs]) => {
-    const nlUrl = `https://www.mameleon.com/blog/${baseSlug}/`;
-    const enUrl = `https://www.mameleon.com/en/blog/${baseSlug}/`;
-    const nlLastmod = langs.nl ? getValidDate(langs.nl.data.updated || langs.nl.data.pubDate) : undefined;
-    const enLastmod = langs.en ? getValidDate(langs.en.data.updated || langs.en.data.pubDate) : undefined;
-
-    const alternates = [];
-    if (langs.nl) {
-      alternates.push({ lang: 'nl', url: nlUrl });
-    }
-    if (langs.en) {
-      alternates.push({ lang: 'en', url: enUrl });
-    }
-
-    const urls = [];
-    if (langs.nl) {
-      urls.push({
-        url: nlUrl,
-        lastmod: nlLastmod,
-        alternates,
-      });
-    }
-    if (langs.en) {
-      urls.push({
-        url: enUrl,
-        lastmod: enLastmod,
-        alternates,
-      });
-    }
-    return urls;
   });
 
-  // Combine all pages
-  const allPages = [
-    ...basePages.map((p) => ({ ...p, alternates: [] })),
-    ...enPages.map((p) => ({ ...p, alternates: [] })),
-    ...blogPages,
-  ];
+  const allPages = [...basePages, ...enPages, ...blogPages];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${allPages
-  .map(
-    (page) => `<url>
+    .map(
+      (page) => `<url>
   <loc>${page.url}</loc>
   <lastmod>${page.lastmod}</lastmod>
-  ${page.alternates
-    .map(
-      (alt) =>
-        `<xhtml:link rel="alternate" hreflang="${alt.lang}" href="${alt.url}"/>`
-    )
-    .join('\n  ')}
 </url>`
-  )
-  .join('\n')}
+    )
+    .join('\n')}
 </urlset>`;
 
   return new Response(sitemap, {
