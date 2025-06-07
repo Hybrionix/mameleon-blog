@@ -7,7 +7,6 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   <input id="menu__toggle" type="checkbox" />
   <label class="menu__btn" for="menu__toggle">
     <span></span>
-    <span class="menu-label">Menu</span>
   </label>
   <ul class="menu__box">
     <li><a class="menu__item" href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</a></li>
@@ -32,17 +31,17 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     position: fixed;
     top: 20px;
     left: 20px;
-    width: 54px;      /* was 36px */
-    height: 54px;     /* was 36px */
+    width: 36px;
+    height: 36px;
     cursor: pointer;
     z-index: 1100;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #ffe4ec;
-    border-radius: 12px; /* was 8px */
+    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(161, 106, 232, 0.12);
-    border: 2.5px solid #a16ae8;
+    border: 2px solid #a16ae8;
     transition: background 0.2s, border 0.2s;
   }
   .menu__btn:hover {
@@ -54,10 +53,10 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   .menu__btn > span::after {
     display: block;
     position: absolute;
-    width: 36px;      /* was 24px */
-    height: 6px;      /* was 4px */
+    width: 24px;
+    height: 4px;
     background: linear-gradient(90deg, #a16ae8 0%, #ffacfa 100%);
-    border-radius: 3px;
+    border-radius: 2px;
     transition: 0.25s;
     box-shadow: 0 1px 4px #d1baff44;
   }
@@ -69,20 +68,20 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   .menu__btn > span::before {
     content: '';
     position: absolute;
-    top: -14px;       /* was -10px */
-    width: 36px;
-    height: 6px;
+    top: -10px;
+    width: 24px;
+    height: 4px;
     background: inherit;
-    border-radius: 3px;
+    border-radius: 2px;
   }
   .menu__btn > span::after {
     content: '';
     position: absolute;
-    top: 14px;        /* was 10px */
-    width: 36px;
-    height: 6px;
+    top: 10px;
+    width: 24px;
+    height: 4px;
     background: inherit;
-    border-radius: 3px;
+    border-radius: 2px;
   }
   #menu__toggle:checked + .menu__btn > span {
     transform: rotate(45deg);
@@ -131,20 +130,6 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   .menu__item:hover {
     background-color: #ffd6ec;
     color: #a16ae8;
-  }
-}
-.menu-label {
-  margin-left: 12px;
-  font-size: 1.2em;
-  color: #a16ae8;
-  font-weight: bold;
-  letter-spacing: 1px;
-  user-select: none;
-  display: inline-block;
-}
-@media (min-width: 801px) {
-  .menu-label {
-    display: none;
   }
 }
 </style>
