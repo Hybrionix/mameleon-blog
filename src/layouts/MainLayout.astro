@@ -1,22 +1,136 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { ORG_DESCRIPTION } from '../consts';
 
-const { title, description } = Astro.props;
+const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 const path = Astro.url.pathname;
 const lang = path.startsWith('/en') ? 'en' : 'nl';
 const nlPath = lang === 'en' ? path.replace(/^\/en/, '') || '/' : path;
 const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL(image, Astro.site).toString();
+const ogLocale = Astro.url.pathname.startsWith('/en') ? 'en_US' : 'nl_NL';
+const orgDescription = description && description.length > 30 ? description : ORG_DESCRIPTION;
 ---
 <html lang={lang}>
-  <BaseHead title={title} description={description} />
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Font preloads -->
+    <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content="Mameleon" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured Data (Organization) -->
+    <script type="application/ld+json">{JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Mameleon",
+      "url": "https://www.mameleon.com",
+      "description": orgDescription,
+      "logo": "https://www.mameleon.com/mameleon_transparant_430.png"
+    })}</script>
+  </head>
   <body>
-    <Header lang={lang} nlPath={nlPath} enPath={enPath} />
+    <header>
+      <nav class="header-bar">
+        <div class="header-content">
+          <div class="header-section logo-image">
+            <a href="/">
+              <img src="/mameleon_transparant_430.png" alt="Mameleon Logo" />
+            </a>
+          </div>
+          <!--
+          <div class="header-section site-title">
+            <a href="/">
+              <span class="rainbow-text">Mameleon</span>
+            </a>
+          </div>
+          -->
+          <div class="header-section internal-links">
+            <a href={enPath} class={lang === 'en' ? 'active' : ''}>Home</a>
+            <a href={lang === 'en' ? '/en/about' : '/about'}>About</a>
+            <a href={lang === 'en' ? '/en/blog' : '/blog'}>Blog</a>
+            <a href={lang === 'en' ? '/en/contact' : '/contact'}>Contact</a>
+          </div>
+        </div>
+      </nav>
+      <div class="header-section header-socials">
+        <div class="social-links">
+          <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+            <!-- Facebook SVG -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#4B2067" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24H12.82v-9.294H9.692v-3.622h3.127V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+          </a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter">
+            <!-- Twitter SVG -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#4B2067" xmlns="http://www.w3.org/2000/svg"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195A4.92 4.92 0 0 0 16.616 3c-2.73 0-4.942 2.21-4.942 4.936 0 .388.045.765.127 1.124C7.728 8.89 4.1 6.884 1.671 3.965c-.427.722-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.237-.616c-.054 2.281 1.581 4.415 3.949 4.89-.386.104-.793.16-1.213.16-.297 0-.583-.028-.862-.08.584 1.823 2.28 3.152 4.29 3.188A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.213-.005-.425-.014-.636A9.936 9.936 0 0 0 24 4.557z"/></svg>
+          </a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+            <!-- Instagram SVG -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#4B2067" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.771.131 4.659.396 3.678 1.378c-.982.982-1.247 2.094-1.306 3.374C2.013 8.332 2 8.741 2 12c0 3.259.013 3.668.072 4.948.059 1.28.324 2.392 1.306 3.374.981.982 2.093 1.247 3.374 1.306C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.28-.059 2.392-.324 3.374-1.306.982-.982 1.247-2.094 1.306-3.374.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.059-1.28-.324-2.392-1.306-3.374-.982-.982-2.094-1.247-3.374-1.306C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <!-- Add more social icons as needed -->
+        </div>
+      </div>
+      <nav class="language-switcher">
+        <a href={nlPath} class={lang === 'nl' ? 'active' : ''} onclick="localStorage.setItem('lang','nl')">Nederlands</a>
+        <a href={enPath} class={lang === 'en' ? 'active' : ''} onclick="localStorage.setItem('lang','en')">English</a>
+      </nav>
+    </header>
     <main>
       <slot />
     </main>
-    <Footer />
+    <footer>
+      <div class="footer-content">
+        <nav class="footer-links">
+          <a href={lang === 'en' ? '/en/terms-and-conditions' : '/terms-and-conditions'}>Terms & Conditions</a>
+          <span>|</span>
+          <a href={lang === 'en' ? '/en/privacy-policy' : '/privacy-policy'}>Privacy Policy</a>
+        </nav>
+        <div class="social-links">
+          <!-- Repeat social icons here if needed -->
+          <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#4B2067" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24H12.82v-9.294H9.692v-3.622h3.127V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+          </a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#4B2067" xmlns="http://www.w3.org/2000/svg"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195A4.92 4.92 0 0 0 16.616 3c-2.73 0-4.942 2.21-4.942 4.936 0 .388.045.765.127 1.124C7.728 8.89 4.1 6.884 1.671 3.965c-.427.722-.666 1.561-.666 2.475 0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.237-.616c-.054 2.281 1.581 4.415 3.949 4.89-.386.104-.793.16-1.213.16-.297 0-.583-.028-.862-.08.584 1.823 2.28 3.152 4.29 3.188A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.213-.005-.425-.014-.636A9.936 9.936 0 0 0 24 4.557z"/></svg>
+          </a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#4B2067" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.771.131 4.659.396 3.678 1.378c-.982.982-1.247 2.094-1.306 3.374C2.013 8.332 2 8.741 2 12c0 3.259.013 3.668.072 4.948.059 1.28.324 2.392 1.306 3.374.981.982 2.093 1.247 3.374 1.306C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.28-.059 2.392-.324 3.374-1.306.982-.982 1.247-2.094 1.306-3.374.059-1.28.072-1.689.072-4.948 0-3.259-.013-3.668-.072-4.948-.059-1.28-.324-2.392-1.306-3.374-.982-.982-2.094-1.247-3.374-1.306C15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+        </div>
+        <div class="footer-copyright">
+          © {new Date().getFullYear()} Mameleon - Powered by <a href="https://www.hybrionix.com">Hybrionix</a>
+        </div>
+      </div>
+    </footer>
     <script>
       window.addEventListener('pageshow', function(event) {
         if (event.persisted) {
