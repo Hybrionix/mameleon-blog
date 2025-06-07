@@ -6,10 +6,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
-const path = Astro.url.pathname;
-const lang = path.startsWith('/en') ? 'en' : 'nl';
-const nlPath = lang === 'en' ? path.replace(/^\/en/, '') || '/' : path;
-const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
+const lang = 'nl';
+const nlPath = '/blog/';
+const enPath = '/en/blog/';
 
 const allPosts = await getCollection('blog');
 const posts = allPosts.filter(post => post.data.lang === lang);

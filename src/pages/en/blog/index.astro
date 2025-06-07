@@ -6,10 +6,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../../components/FormattedDate.astro';
 
-const path = Astro.url.pathname;
-const lang = path.startsWith('/en') ? 'en' : 'nl';
-const nlPath = lang === 'en' ? path.replace(/^\/en/, '') || '/' : path;
-const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
+const lang = 'en';
+const nlPath = '/blog/';
+const enPath = '/en/blog/';
 
 const allPosts = await getCollection('blog');
 const posts = allPosts.filter(post => post.data.lang === lang);
@@ -23,7 +22,7 @@ const posts = allPosts.filter(post => post.data.lang === lang);
             {
                 posts.map((post) => (
                     <li>
-                        <a href={`/blog/${post.slug}/`}>
+                        <a href={`/en/blog/${post.slug}/`}>
                             <img width={720} height={360} src={post.data.heroImage} alt="" />
                             <h4 class="title">{post.data.title}</h4>
                             <p class="date">
