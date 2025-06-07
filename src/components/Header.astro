@@ -10,11 +10,18 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
 <header>
   <nav class="header-bar">
     <div class="header-content">
+      <div class="header-section logo-image">
+        <a href="/">
+          <img src="/mameleon_transparant_430.png" alt="Mameleon Logo" />
+        </a>
+      </div>
+      <!--    
       <div class="header-section site-title">
         <a href="/">
           <span class="rainbow-text">Mameleon</span>
         </a>
       </div>
+      -->
       <div class="header-section internal-links">
         <HeaderLink href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</HeaderLink>
         <HeaderLink href={getLink('/about')}>{lang === 'en' ? 'About' : 'Over mij'}</HeaderLink>
@@ -40,6 +47,16 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   </nav>
 </header>
 <style>
+	.logo-image {
+	  display: flex;
+	  align-items: center;
+	  margin-right: 1em;
+	}
+	.logo-image img {
+	  width: 150px; /* or whatever size fits your design */
+	  height: auto;
+	  object-fit: contain;
+	}
   .header-bar {
     width: 100%;
     margin: 0;
