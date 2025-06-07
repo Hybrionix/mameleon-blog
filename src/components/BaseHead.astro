@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import { ORG_DESCRIPTION } from '../consts';
 
 interface Props {
   title: string;
@@ -13,6 +14,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 const ogImage = new URL(image, Astro.site).toString();
 const ogLocale = Astro.url.pathname.startsWith('/en') ? 'en_US' : 'nl_NL';
+// Use fallback if description is missing or too short
+const orgDescription = description && description.length > 30 ? description : ORG_DESCRIPTION;
 ---
 
 <head>
@@ -56,9 +59,7 @@ const ogLocale = Astro.url.pathname.startsWith('/en') ? 'en_US' : 'nl_NL';
     "@type": "Organization",
     "name": "Mameleon",
     "url": "https://www.mameleon.com",
-    "description": description && description.length > 30
-      ? description
-      : "Mameleon is gespecialiseerd in het ontwikkelen van inspirerende materialen op het gebied van coaching en persoonlijke groei.",
+    "description": orgDescription,
     "logo": "https://www.mameleon.com/mameleon_transparant_430.png"
   })}</script>
 </head>
