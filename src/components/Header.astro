@@ -25,6 +25,9 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
       </div>
       <!-- Hamburger menu for mobile -->
       <HamburgerMenu lang={lang} />
+      <div class="header-section language-switcher-section">
+        <LanguageSwitcher lang={lang} nlPath={nlPath} enPath={enPath} />
+      </div>
     </div>
   </nav>
   <div class="header-section header-socials">
@@ -62,15 +65,15 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     border-bottom: 2px solid #4B2067;
   }
   .header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0.7em;
     max-width: 1000px;
     margin: 0 auto;
-    width: 100%;
-    display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.7em;
   }
   header {
     /* margin: 10px 0 0 0; */
