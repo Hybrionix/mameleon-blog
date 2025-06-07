@@ -51,14 +51,12 @@ const ogLocale = Astro.url.pathname.startsWith('/en') ? 'en_US' : 'nl_NL';
   <meta name="twitter:image" content={ogImage} />
 
   <!-- Structured Data (Organization) -->
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Mameleon",
-      "url": Astro.site,
-      "description": description,
-      "logo": new URL('/mameleon_transparant_430.png', Astro.site).toString()
-    })}
-  </script>
+  <script type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mameleon",
+    "url": "https://www.mameleon.com",
+    "description": "Mameleon is gespecialiseerd in het ontwikkelen van inspirerende materialen op het gebied van coaching en persoonlijke groei.",
+    "logo": "https://www.mameleon.com/mameleon_transparant_430.png"
+  })}</script>
 </head>
