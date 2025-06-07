@@ -252,18 +252,20 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     .social-links {
       justify-content: center;
     }
-      font-size: 1.1em;
-    }dia (max-width: 800px) {
+  }
+
+  @media (max-width: 800px) {
     .internal-links a {
-      font-size: 0.95em;tant;
+      font-size: 0.95em !important;
       padding: 0.4em 0.7em;
     }
-    .social-links svg {x) {
-      width: 22px;{
-      height: 22px;important;
+    .social-links svg {
+      width: 22px !important;
+      height: 22px !important;
     }
   }
-</style> (max-width: 600px) {
+
+  @media (max-width: 600px) {
     .site-title {
       font-size: 1.1em;
     }
