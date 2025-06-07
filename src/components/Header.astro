@@ -4,7 +4,7 @@ import SocialLinks from './SocialLinks.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { SITE_TITLE } from '../consts';
 
-const { lang = 'nl', nlPath = '/', enPath = '/en/' } = Astro.props;
+const { lang = 'nl', nlPath = '/blog/', enPath = '/en/blog/' } = Astro.props;
 const getLink = (path) => lang === 'en' ? `/en${path}` : path;
 ---
 <header>
@@ -25,7 +25,7 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
       <div class="header-section internal-links">
         <HeaderLink href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</HeaderLink>
         <HeaderLink href={getLink('/about')}>{lang === 'en' ? 'About' : 'Over mij'}</HeaderLink>
-        <HeaderLink href={getLink('/blog')}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
+        <HeaderLink href={lang === 'en' ? '/en/blog/' : '/blog/'}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
         <HeaderLink href={getLink('/contact')}>{lang === 'en' ? 'Contact' : 'Contact'}</HeaderLink>
       </div>
     </div>
@@ -33,18 +33,7 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   <div class="header-section header-socials">
     <SocialLinks />
   </div>
-  <nav class="language-switcher">
-    <a 
-      href={nlPath} 
-      class={lang === 'nl' ? 'active' : ''} 
-      onclick="localStorage.setItem('lang','nl')"
-    >Nederlands</a>
-    <a 
-      href={enPath} 
-      class={lang === 'en' ? 'active' : ''} 
-      onclick="localStorage.setItem('lang','en')"
-    >English</a>
-  </nav>
+  <LanguageSwitcher lang={lang} nlPath={nlPath} enPath={enPath} />
 </header>
 <style>
 	.logo-image {

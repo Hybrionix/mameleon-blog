@@ -8,36 +8,13 @@ const path = Astro.url.pathname;
 
 // Detect language from path
 let lang = 'nl';
-if (path.startsWith('/blog/en/')) lang = 'en';
-else if (path.startsWith('/blog/nl/')) lang = 'nl';
+if (path.startsWith('/en/')) lang = 'en';
 
-// Build language switch paths
-let nlPath = path.replace(/^\/blog\/en\//, '/blog/nl/');
-let enPath = path.replace(/^\/blog\/nl\//, '/blog/en/');
-
-// Fallback for non-blog pages
-if (!path.startsWith('/blog/')) {
-  nlPath = path.replace(/^\/en\//, '/');
-  enPath = path.startsWith('/en/') ? path : '/en' + path;
-}
+// Set language switch paths for blog
+let nlPath = '/blog/';
+let enPath = '/en/blog/';
 ---
 <BaseHead title={title} description={description} />
-<script>
-  // Domain redirect
-  if (location.hostname === 'mameleon.com') {
-    location.href = 'https://www.mameleon.com' + location.pathname + location.search + location.hash;
-  }
-  // Language redirect for blog section
-  (function() {
-    const lang = localStorage.getItem('lang');
-    const path = window.location.pathname;
-    if (lang === 'en' && path.startsWith('/blog/nl/')) {
-      window.location.pathname = path.replace(/^\/blog\/nl\//, '/blog/en/');
-    } else if (lang === 'nl' && path.startsWith('/blog/en/')) {
-      window.location.pathname = path.replace(/^\/blog\/en\//, '/blog/nl/');
-    }
-  })();
-</script>
 <Header lang={lang} nlPath={nlPath} enPath={enPath} />
 <main>
   <slot />
