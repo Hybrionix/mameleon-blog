@@ -6,20 +6,21 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 const path = Astro.url.pathname;
 const lang = path.startsWith('/en') ? 'en' : 'nl';
 
-// Compute the current path without the /en prefix
+// Remove /en from path for language switcher
 const pathWithoutLang = lang === 'en' ? path.replace(/^\/en/, '') || '/' : path;
 
-// For navigation links
+// Navigation helper
 const nav = (slug) => lang === 'en' ? `/en${slug}` : slug;
 
-// For language switcher: keep the current page, just switch prefix
+// Language switcher: keep current page, just switch prefix
 const nlPath = pathWithoutLang === '/' ? '/' : pathWithoutLang;
 const enPath = `/en${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImage = new URL(image, Astro.site).toString();
 const ogLocale = lang === 'en' ? 'en_US' : 'nl_NL';
 const orgDescription = description && description.length > 30 ? description : ORG_DESCRIPTION;
---- 
+---
 <html lang={lang}>
   <head>
     <!-- Global Metadata -->
