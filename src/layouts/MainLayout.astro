@@ -28,11 +28,15 @@ const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
         }
       });
     </script>
+    {/*
     <script>
-      // Domain redirect
-      if (location.hostname === 'mameleon.com') {
-        location.href = 'https://www.mameleon.com' + location.pathname + location.search + location.hash;
-      }
+      // Domain redirect (disabled, handled by Cloudflare)
+      // if (location.hostname === 'mameleon.com') {
+      //   location.href = 'https://www.mameleon.com' + location.pathname + location.search + location.hash;
+      // }
+    </script>
+    */}
+    <script>
       // Language redirect
       (function() {
         const lang = localStorage.getItem('lang');
