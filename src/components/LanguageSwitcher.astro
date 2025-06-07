@@ -2,14 +2,18 @@
 const { lang = 'nl', nlPath = '/blog/', enPath = '/en/blog/' } = Astro.props;
 ---
 <nav class="language-switcher">
-  <a href={nlPath} class={lang === 'nl' ? 'active' : ''} onclick="localStorage.setItem('lang','nl')">Nederlands</a>
-  <a href={enPath} class={lang === 'en' ? 'active' : ''} onclick="localStorage.setItem('lang','en')">English</a>
+  <a href={nlPath} class={lang === 'nl' ? 'active' : ''} onclick="localStorage.setItem('lang','nl')">
+    <img src="https://flagcdn.com/40x30/nl.png" alt="Nederlands" title="Nederlands" width="24" height="18" style="vertical-align:middle; margin-right:0.3em;" />
+  </a>
+  <a href={enPath} class={lang === 'en' ? 'active' : ''} onclick="localStorage.setItem('lang','en')">
+    <img src="https://flagcdn.com/40x30/uk.png" alt="English" title="English" width="24" height="18" style="vertical-align:middle; margin-right:0.3em;" />
+  </a>
 </nav>
 <style>
 .language-switcher {
   display: flex;
   gap: 0.5em;
-  justify-content: center;
+  justify-content: flex-end;
   margin: 0.5em;
 }
 .language-switcher a {
@@ -19,6 +23,10 @@ const { lang = 'nl', nlPath = '/blog/', enPath = '/en/blog/' } = Astro.props;
   padding: 0.2em 0.7em;
   border-radius: 6px;
   transition: background 0.2s, color 0.2s;
+  font-size: 1.2em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
 }
 .language-switcher a.active,
 .language-switcher a:hover {
