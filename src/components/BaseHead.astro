@@ -14,8 +14,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 const ogImage = new URL(image, Astro.site).toString();
 const ogLocale = Astro.url.pathname.startsWith('/en') ? 'en_US' : 'nl_NL';
-// Use fallback if description is missing or too short
 const orgDescription = description && description.length > 30 ? description : ORG_DESCRIPTION;
+
+// Structured data as a minified JSON string
+const orgStructuredData = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mameleon",
+  "url": "https://www.mameleon.com",
+  "description": orgDescription,
+  "logo": "https://www.mameleon.com/mameleon_transparant_430.png"
+});
 ---
 
 <!-- Global Metadata -->
@@ -53,13 +62,4 @@ const orgDescription = description && description.length > 30 ? description : OR
 <meta name="twitter:image" content={ogImage} />
 
 <!-- Structured Data (Organization) -->
-<script type="application/ld+json">
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Mameleon",
-    "url": "https://www.mameleon.com",
-    "description": orgDescription,
-    "logo": "https://www.mameleon.com/mameleon_transparant_430.png"
-  })}
-</script>
+<script type="application/ld+json" set:html={orgStructuredData}></script>
