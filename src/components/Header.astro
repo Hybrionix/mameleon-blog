@@ -190,13 +190,26 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   .social-links svg {
     display: block;
   }
-  .language-switcher {
-    margin-left: auto;
-    display: flex;
-    gap: 0.5em;
-    justify-content: flex-end;
-    align-items: center;
-  }
+  .language-switcher-section {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  /* Add spacing from the nav items */
+  padding-left: 1em;
+}
+
+.language-switcher {
+  border: 2px solid #a16ae8;
+  background: linear-gradient(90deg, #ffe4ec 0%, #d1baff 100%);
+  border-radius: 10px;
+  padding: 0.2em 1em;
+  display: flex;
+  gap: 0.5em;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(161, 106, 232, 0.10);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
   .language-switcher a {
     color: #330075;
     font-weight: 600;
@@ -239,18 +252,18 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     .social-links {
       justify-content: center;
     }
+      font-size: 1.1em;
+    }dia (max-width: 800px) {
+    .internal-links a {
+      font-size: 0.95em;tant;
+      padding: 0.4em 0.7em;
+    }
+    .social-links svg {x) {
+      width: 22px;{
+      height: 22px;important;
+    }
   }
-  @media (max-width: 800px) {
-  .internal-links {
-    display: none !important;
-  }
-}
-@media (min-width: 801px) {
-  .hamburger-menu {
-    display: none !important;
-  }
-}
-  @media (max-width: 600px) {
+</style> (max-width: 600px) {
     .site-title {
       font-size: 1.1em;
     }
