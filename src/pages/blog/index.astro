@@ -6,6 +6,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 
 const lang = 'nl';
 const allPosts = await getCollection('blog');
+// Only posts NOT in the "en/" subfolder
 const posts = allPosts.filter(post => !post.id.startsWith('en/'));
 const blogPrefix = '/blog/';
 ---

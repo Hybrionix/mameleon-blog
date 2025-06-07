@@ -5,7 +5,6 @@ import { render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  // Only include Dutch posts (not in /en/)
   return posts
     .filter((post) => !post.id.startsWith('en/'))
     .map((post) => ({
