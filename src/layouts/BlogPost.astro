@@ -5,10 +5,10 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, lang } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<MainLayout title={title} description={description}>
+<MainLayout title={title} description={description} image={heroImage}>
   <article>
     <div class="hero-image">
       {heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
