@@ -1,13 +1,13 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { render } from 'astro:content';
 import BlogPost from '../../../layouts/BlogPost.astro';
+import { render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  // Only include English posts
+  // Only include English posts (in /en/)
   return posts
-    .filter((post) => post.data.lang === 'en')
+    .filter((post) => post.id.startsWith('en/'))
     .map((post) => ({
       params: { slug: post.slug },
       props: post,

@@ -6,7 +6,7 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 
 const lang = 'en';
 const allPosts = await getCollection('blog');
-const posts = allPosts.filter(post => post.data.lang === lang);
+const posts = allPosts.filter(post => post.id.startsWith('en/'));
 const blogPrefix = '/en/blog/';
 ---
 
