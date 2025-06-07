@@ -53,11 +53,13 @@ const orgDescription = description && description.length > 30 ? description : OR
 <meta name="twitter:image" content={ogImage} />
 
 <!-- Structured Data (Organization) -->
-<script type="application/ld+json">{JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Mameleon",
-  "url": "https://www.mameleon.com",
-  "description": orgDescription,
-  "logo": "https://www.mameleon.com/mameleon_transparant_430.png"
-})}</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mameleon",
+    "url": "https://www.mameleon.com",
+    "description": {JSON.stringify(orgDescription)},
+    "logo": "https://www.mameleon.com/mameleon_transparant_430.png"
+  }
+</script>
