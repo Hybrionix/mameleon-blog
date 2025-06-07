@@ -10,8 +10,20 @@ const nlPath = lang === 'en' ? path.replace(/^\/en/, '') || '/' : path;
 const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
 ---
 <html lang={lang}>
-  <head>
-    <BaseHead title={title} description={description} />
+  <BaseHead title={title} description={description} />
+  <body>
+    <Header lang={lang} nlPath={nlPath} enPath={enPath} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+          window.location.reload();
+        }
+      });
+    </script>
     <script>
       // Domain redirect
       if (location.hostname === 'mameleon.com') {
@@ -27,20 +39,6 @@ const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
           window.location.pathname = path.replace(/^\/en/, '') || '/';
         }
       })();
-    </script>
-  </head>
-  <body>
-    <Header lang={lang} nlPath={nlPath} enPath={enPath} />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    <script>
-      window.addEventListener('pageshow', function(event) {
-        if (event.persisted) {
-          window.location.reload();
-        }
-      });
     </script>
   </body>
 </html>
