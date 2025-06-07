@@ -31,71 +31,54 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     position: fixed;
     top: 20px;
     left: 20px;
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
     cursor: pointer;
     z-index: 1100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ffe4ec;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(161, 106, 232, 0.12);
-    border: 2px solid #a16ae8;
-    transition: background 0.2s, border 0.2s;
-  }
-  .menu__btn:hover {
-    background: #d1baff;
-    border-color: #4B2067;
   }
   .menu__btn > span,
   .menu__btn > span::before,
   .menu__btn > span::after {
     display: block;
     position: absolute;
-    width: 24px;
-    height: 4px;
-    background: linear-gradient(90deg, #a16ae8 0%, #ffacfa 100%);
+    width: 100%;
+    height: 2.5px;
+    background-color: #616161;
+    transition-duration: .25s;
     border-radius: 2px;
-    transition: 0.25s;
-    box-shadow: 0 1px 4px #d1baff44;
   }
   .menu__btn > span {
     position: relative;
-    top: 0;
-    left: 0;
+    top: 12px;
   }
   .menu__btn > span::before {
     content: '';
     position: absolute;
-    top: -10px;
-    width: 24px;
-    height: 4px;
+    top: -8px;
+    width: 100%;
+    height: 2.5px;
     background: inherit;
     border-radius: 2px;
   }
   .menu__btn > span::after {
     content: '';
     position: absolute;
-    top: 10px;
-    width: 24px;
-    height: 4px;
+    top: 8px;
+    width: 100%;
+    height: 2.5px;
     background: inherit;
     border-radius: 2px;
   }
   #menu__toggle:checked + .menu__btn > span {
     transform: rotate(45deg);
-    background: #a16ae8;
   }
   #menu__toggle:checked + .menu__btn > span::before {
     top: 0;
     transform: rotate(0deg);
-    background: #a16ae8;
   }
   #menu__toggle:checked + .menu__btn > span::after {
     top: 0;
     transform: rotate(90deg);
-    background: #a16ae8;
   }
   .menu__box {
     display: block;
@@ -107,8 +90,8 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
     margin: 0;
     padding: 80px 0;
     list-style: none;
-    background: linear-gradient(180deg, #ffe4ec 0%, #d1baff 100%);
-    box-shadow: 2px 2px 16px rgba(161, 106, 232, 0.18);
+    background-color: #ECEFF1;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
     transition-duration: .25s;
     z-index: 1099;
   }
@@ -118,18 +101,15 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   .menu__item {
     display: block;
     padding: 16px 32px;
-    color: #4B2067;
+    color: #333;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 600;
     text-decoration: none;
     transition-duration: .25s;
-    border-radius: 6px;
-    margin: 0 8px;
   }
   .menu__item:hover {
-    background-color: #ffd6ec;
-    color: #a16ae8;
+    background-color: #CFD8DC;
   }
 }
 </style>
