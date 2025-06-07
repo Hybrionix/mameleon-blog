@@ -16,15 +16,6 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
           <img src="/mameleon_transparant_430.png" alt="Mameleon Logo" />
         </a>
       </div>
-      <!-- Hamburger menu for mobile, right of logo -->
-      <div class="hamburger-menu">
-        <input id="menu__toggle" type="checkbox" />
-        <label class="menu__btn" for="menu__toggle" aria-label="Menu">
-          <span></span>
-        </label>
-        <span class="menu-label">Menu</span>
-        <!-- ...menu__box... -->
-      </div>
       <!-- Desktop menu -->
       <div class="header-section internal-links">
         <HeaderLink href={getLink('/')}>{lang === 'en' ? 'Home' : 'Home'}</HeaderLink>
@@ -32,6 +23,8 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
         <HeaderLink href={lang === 'en' ? '/en/blog/' : '/blog/'}>{lang === 'en' ? 'Blog' : 'Blog'}</HeaderLink>
         <HeaderLink href={getLink('/contact')}>{lang === 'en' ? 'Contact' : 'Contact'}</HeaderLink>
       </div>
+      <!-- Hamburger menu for mobile -->
+      <HamburgerMenu lang={lang} />
     </div>
   </nav>
   <div class="header-section header-socials">
@@ -267,32 +260,4 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
       height: 22px;
     }
   }
-  @media (max-width: 800px) {
-  .hamburger-menu {
-    display: flex;
-    align-items: center;
-    margin-left: 1em;
-    position: static;
-    z-index: 1001;
-  }
-  .menu__btn {
-    position: relative;
-    width: 54px;
-    height: 54px;
-    /* ...rest... */
-  }
-  .menu-label {
-    margin-left: 12px;
-    font-size: 1.3em;
-    color: #a16ae8;
-    font-weight: bold;
-    letter-spacing: 1px;
-    user-select: none;
-    background: #ffe4ec;
-    padding: 8px 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(161, 106, 232, 0.08);
-    display: block;
-  }
-}
 </style>
