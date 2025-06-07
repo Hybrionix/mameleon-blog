@@ -9,6 +9,8 @@ const lang = path.startsWith('/en') ? 'en' : 'nl';
 const nlPath = lang === 'en' ? path.replace(/^\/en/, '') || '/' : path;
 const enPath = lang === 'nl' ? '/en' + (path === '/' ? '' : path) : path;
 ---
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <BaseHead title={title} description={description} />
 <script>
   // Domain redirect
