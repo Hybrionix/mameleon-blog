@@ -257,6 +257,24 @@ const getLink = (path) => lang === 'en' ? `/en${path}` : path;
   }
 
   @media (max-width: 800px) {
+    .internal-links {
+      display: none !important;
+    }
+    .hamburger-menu {
+      display: flex !important;
+    }
+  }
+
+  @media (min-width: 801px) {
+    .hamburger-menu {
+      display: none !important;
+    }
+    .internal-links {
+      display: flex !important;
+    }
+  }
+
+  @media (max-width: 800px) {
     .internal-links a {
       font-size: 0.95em !important;
       padding: 0.4em 0.7em;
