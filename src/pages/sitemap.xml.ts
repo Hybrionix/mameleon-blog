@@ -57,9 +57,17 @@ export async function GET() {
 
   const allPages = [...basePages, ...enPages, ...blogPages];
 
+  // Remove duplicate URLs
+  const seen = new Set();
+  const uniquePages = allPages.filter((page) => {
+    if (seen.has(page.url)) return false;
+    seen.add(page.url);
+    return true;
+  });
+
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allPages
+${uniquePages
     .map(
       (page) => `<url>
   <loc>${page.url}</loc>
